@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>Black Jack Game</h1>
+{% endblock %}
+
+{% block content %}
+
+
+<!--- have a place for what images to show for the house and for the player--->
+<!--- this will also be extended, this should only need to handle the displaying of the cards --->
+<section class="content">
+  <header>
+    {% block header %}{% endblock %}
+  </header>
+  {% for message in get_flashed_messages() %}
+    <div class="flash">{{ message }}</div>
+  {% endfor %}
+  {% block content %}{% endblock %}
+</section>
+{% endblock %}
