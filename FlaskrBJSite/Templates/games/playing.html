@@ -1,7 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'games/game.html' %}
 
 <!--add buttons for hit and for stand-->
-{% block content %}
+{% block playerInput %}
     <form method="post">
         <input type="submit" name="playerChoice" value="Hit">
         <input type="submit" name="playerChoice" value="Stay">

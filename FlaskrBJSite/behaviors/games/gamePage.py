@@ -16,7 +16,7 @@ bettingAmount = "BettingAmount"
 gameNumber = "GameNumber"
 def setupGameSession():
     session[balance] = 100
-    session[BJGame] = 123
+    session[BJGame] = {}
     session[bettingAmount] = 0
     session[gameNumber] = 0
 
@@ -47,6 +47,9 @@ def betting():
             return redirect(url_for('games.playing'))
     return render_template('games/betting.html')
 
+
+
+
 @bp.route('/playing',methods=('GET','POST'))
 @login_required
 def playing():#TODO: refactor to better use the tools provided
@@ -59,11 +62,11 @@ def playing():#TODO: refactor to better use the tools provided
                 session[BJGame] = game.createDictonarySave()
                 return redirect(url_for('games.playing.html'))
             else:
-                endOfHandHandler(game)
+                return endOfHandHandler(game)
         elif request.form['playerChoice'] == "Stay":
             game.stand()
-            endOfHandHandler(game)
-    return render_template('games/playing.html')  # ''',cards = session[BJGame].getCards()'''
+            return endOfHandHandler(game)
+    return render_template('games/playing.html',cards = cardTranslating(None))  # ''',cards = session[BJGame].getCards()'''
 
 def endOfHandHandler(bjGame):
     if bjGame.didPlayerWin():
@@ -73,13 +76,14 @@ def endOfHandHandler(bjGame):
 
     session[gameNumber] += 1
     session[BJGame] = bjGame.createDictonarySave()
+    print("I got here")
     return redirect(url_for('games.results'))
 
 
 @bp.route('/results',methods=('GET','POST'))
 @login_required
 def results():
-    return render_template('games/results.html')
+    return render_template('games/results.html', cards = cardTranslating(None))
 
 @bp.route("/finalScoring")
 @login_required
@@ -89,3 +93,8 @@ def finalScoring():
             db.saveScore(session['user_id'],session[balance])
             return render_template('games/finalScoring.html',scoreSaved = False)
     return render_template('games/finalScoring.html',scoreSaved = True)
+
+
+def cardTranslating(cardList):
+    cardPreamble = "images/cards/"
+    return [cardPreamble+"card_back.png"]
