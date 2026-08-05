@@ -5,7 +5,7 @@ from flask import(
 )
 from werkzeug.exceptions import abort
 from FlaskrBJSite.behaviors.auth import login_required
-from FlaskrBJSite.Database.db import get_db
+from FlaskrBJSite.Database import db
 from FlaskrBJSite.behaviors.games.blackjack import BlackJack
 
 bp = Blueprint('games',__name__)
@@ -21,6 +21,7 @@ def setupGameSession():
     session[gameNumber] = 0
 
 @bp.route('/betting',methods=('GET','POST'))
+@login_required
 def betting():
     setupGameSession()
     if request.method == 'POST':
@@ -47,7 +48,8 @@ def betting():
     return render_template('games/betting.html')
 
 @bp.route('/playing',methods=('GET','POST'))
-def playing():#TODO: refactor to better use the tools provided 
+@login_required
+def playing():#TODO: refactor to better use the tools provided
     print('8')
     if request.method == 'POST':
         if request.form['playerChoice'] == "Hit":
@@ -72,10 +74,15 @@ def endOfHandHandler():
 
 
 @bp.route('/results',methods=('GET','POST'))
+@login_required
 def results():
     return render_template('games/results.html')
 
 @bp.route("/finalScoring")
+@login_required
 def finalScoring():
-
-    return render_template('games/finalScoring.html')
+    if request.method == 'POST':
+        if request.form['playerChoice'] == "Save Score":
+            db.saveScore(session['user_id'],session[balance])
+            return render_template('games/finalScoring.html',scoreSaved = False)
+    return render_template('games/finalScoring.html',scoreSaved = True)
