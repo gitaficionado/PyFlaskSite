@@ -1,5 +1,6 @@
 import sqlite3
 from datetime import datetime
+from werkzeug.security import check_password_hash, generate_password_hash
 
 import click
 from flask import current_app,g
@@ -24,7 +25,7 @@ def close_db(e=None):
 def init_db():
     db = get_db()
 
-    with current_app.open_resource('schema.sql') as f:
+    with current_app.open_resource('Database\\schema.sql') as f:
         db.executescript(f.read().decode('utf8'))
 
 @click.command('init-db')
@@ -41,3 +42,27 @@ sqlite3.register_converter(
 def init_app(app):
     app.teardown_appcontext(close_db)
     app.cli.add_command(init_db_command)
+
+def addUser(username, password):
+    get_db()
+    try:
+        g.db.execute(
+            "INSERT INTO user (username, password) VALUES (?, ?)",
+            (username, generate_password_hash(password)),
+        )
+        g.db.commit()
+    except g.db.IntegrityError:
+        return f"User {username} is already registered."
+    else:
+        return None
+def getUserDataByName(username):
+    get_db()
+    return g.db.execute(
+            'SELECT * FROM user WHERE username = ?', (username,)
+        ).fetchone()
+
+def getUserDataById(user_id):
+    get_db()
+    return g.db.execute(
+            'SELECT * FROM user WHERE id = ?', (user_id,)
+        ).fetchone()

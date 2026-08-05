@@ -8,6 +8,7 @@ CREATE TABLE user (
 );
 
 Create TABLE leaderboard(
+
  username TEXT NOT NULL,
- score INTEGER
-);
+ score INTEGER NOT NULL
+);  

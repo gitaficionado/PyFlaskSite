@@ -1,4 +1,4 @@
-{% extends 'game.html' %}
+{% extends 'base.html' %}
 
 <!--add buttons for hit and for stand-->
 {% block content %}
@@ -7,4 +7,5 @@
         <input type="number" name="betting" id="betting" value="{{ request.form['betting']}}" required>
         <input type="submit" value="save">
     </form>
+
 {% endblock %}
