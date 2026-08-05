@@ -66,3 +66,16 @@ def getUserDataById(user_id):
     return g.db.execute(
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
+
+def saveScore(user_id, score):
+    get_db()
+    try:
+        g.db.execute(
+            "INSERT INTO leaderboard (userId, score) VALUES (?, ?)",
+            (user_id, score),
+        )
+        g.db.commit()
+    except g.db.IntegrityError:
+        return f"problem occured."
+    else:
+        return None

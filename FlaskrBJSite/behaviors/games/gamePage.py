@@ -41,7 +41,7 @@ def betting():
         else:
             print('6')
             session[bettingAmount] = betAmount
-            # session[BJGame] = BlackJack().createDictonarySave()
+            session[BJGame] = BlackJack().createDictonarySave()
             print('7')
             print(dict(session))
             return redirect(url_for('games.playing'))
@@ -51,25 +51,28 @@ def betting():
 @login_required
 def playing():#TODO: refactor to better use the tools provided
     print('8')
+    game = BlackJack(session[BJGame])
     if request.method == 'POST':
         if request.form['playerChoice'] == "Hit":
-            session[BJGame].hit()
-            if session[BJGame].gameStillPlaying():
+            game.hit()
+            if game.gameStillPlaying():
+                session[BJGame] = game.createDictonarySave()
                 return redirect(url_for('games.playing.html'))
             else:
-                endOfHandHandler()
+                endOfHandHandler(game)
         elif request.form['playerChoice'] == "Stay":
-            session[BJGame].stand()
-            endOfHandHandler()
+            game.stand()
+            endOfHandHandler(game)
     return render_template('games/playing.html')  # ''',cards = session[BJGame].getCards()'''
 
-def endOfHandHandler():
-    if session[BJGame].didPlayerWin():
+def endOfHandHandler(bjGame):
+    if bjGame.didPlayerWin():
         session[balance] += session[bettingAmount]
     else:
         session[balance] -= session[bettingAmount]
 
     session[gameNumber] += 1
+    session[BJGame] = bjGame.createDictonarySave()
     return redirect(url_for('games.results'))
 
 
