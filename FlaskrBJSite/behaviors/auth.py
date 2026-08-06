@@ -46,8 +46,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = user['id']
-            # return redirect(url_for('index'))
-            return redirect(url_for('games.betting'))
+            return redirect(url_for('welcome'))
         flash(error)
 
     return render_template('auth/login.html')
@@ -64,7 +63,7 @@ def load_logged_in_user():
 @bp.route('/logout')
 def logout():
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('welcome'))
 
 def login_required(view):
     @functools.wraps(view)
@@ -75,3 +74,4 @@ def login_required(view):
         return view(**kwargs)
 
     return wrapped_view
+
