@@ -83,11 +83,9 @@
                 Welcome back, <strong>{{ g.user["username"] }}</strong>!
             </p>
 
-            <a
-                href="{{ url_for('games.betting') }}"
-                class="button"
-            >
-                Start Playing
+                <form method="post">
+                      <input type="submit" value="Start Playing">
+                </form>
             </a>
 
         {% else %}

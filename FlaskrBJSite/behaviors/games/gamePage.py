@@ -23,27 +23,19 @@ def setupGameSession():
 @bp.route('/betting',methods=('GET','POST'))
 @login_required
 def betting():
-    setupGameSession()
+    # setupGameSession()
     if request.method == 'POST':
-        print('1')
         betAmount = int(request.form['betting'])
         error = None
-        print('2')
         if betAmount > int(session[balance]):
-            print('3')
             error = "Not enough for bet"
         if betAmount == 0:
-            print('4')
             error = "Must bet at least 1"
         if error is not None:
-            print('5')
             flash(error)
         else:
-            print('6')
             session[bettingAmount] = betAmount
             session[BJGame] = BlackJack().createDictonarySave()
-            print('7')
-            print(dict(session))
             return redirect(url_for('games.playing'))
     return render_template('games/betting.html')
 
@@ -53,7 +45,6 @@ def betting():
 @bp.route('/playing',methods=('GET','POST'))
 @login_required
 def playing():#TODO: refactor to better use the tools provided
-    print('8')
     game = BlackJack(session[BJGame])
     if request.method == 'POST':
         if request.form['playerChoice'] == "Hit":
@@ -76,7 +67,6 @@ def endOfHandHandler(bjGame):
 
     session[gameNumber] += 1
     session[BJGame] = bjGame.createDictonarySave()
-    print("I got here")
     return redirect(url_for('games.results'))
 
 
