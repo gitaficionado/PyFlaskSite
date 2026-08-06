@@ -1,0 +1,131 @@
+
+{% extends "base.html" %}
+
+{% block title %}Welcome to Blackjack{% endblock %}
+
+{% block content %}
+
+<div class="welcome-container">
+
+    <section class="welcome-header">
+
+        <h1>Welcome to Blackjack</h1>
+
+        <p>
+            Try to beat the dealer by getting as close to 21 as possible
+            without going over.
+        </p>
+
+    </section>
+
+    <section class="game-objective">
+
+        <h2>Objective of the Game</h2>
+
+        <p>
+            The objective of Blackjack is to have a hand with a value closer
+            to 21 than the dealer's hand. If your score goes over 21, you lose
+            the hand.
+        </p>
+
+    </section>
+
+    <section class="game-instructions">
+
+        <h2>How to Play</h2>
+
+        <ol>
+            <li>Log in or create a new account.</li>
+
+            <li>Enter the amount you want to bet.</li>
+
+            <li>
+                Select <strong>Hit</strong> if you want another card.
+            </li>
+
+            <li>
+                Select <strong>Stay</strong> if you do not want another card.
+            </li>
+
+            <li>
+                The dealer will continue receiving cards until reaching
+                a score of at least 17.
+            </li>
+
+            <li>
+                The hand closest to 21 without going over wins.
+            </li>
+        </ol>
+
+    </section>
+
+    <section class="card-values">
+
+        <h2>Card Values</h2>
+
+        <ul>
+            <li>Cards 2 through 10 are worth their displayed value.</li>
+
+            <li>Jacks, Queens and Kings are worth 10 points.</li>
+
+            <li>
+                An Ace can be worth 1 or 11 points, depending on the hand.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="welcome-buttons">
+
+        {% if g.user %}
+
+            <p>
+                Welcome back, <strong>{{ g.user["username"] }}</strong>!
+            </p>
+
+            <a
+                href="{{ url_for('games.betting') }}"
+                class="button"
+            >
+                Start Playing
+            </a>
+
+        {% else %}
+
+            <a
+                href="{{ url_for('auth.login') }}"
+                class="button"
+            >
+                Login
+            </a>
+
+            <a
+                href="{{ url_for('auth.register') }}"
+                class="button secondary-button"
+            >
+                Register
+            </a>
+
+            <p>
+                Do not have an account?
+                Register to start playing.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+    <section class="disclaimer">
+
+        <h2>Disclaimer</h2>
+
+        <p>
+            This Blackjack game was created for educational and entertainment
+            purposes only. No real money is used.
+        </p>
+
+    </section>
+
+</div>
+
+{% endblock %}
