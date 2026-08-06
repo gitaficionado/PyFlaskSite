@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    {% if scoreNotSaved %}
+        <form>
+               <input type="submit" name="playerChoice" value="Save Score">
+        </form>
+    {% endif %}
+
+{% endblock %}
