@@ -3,7 +3,7 @@
 
 {% block playerInput %}
     <form method="post">
-    {% if session.get("GameNumber") < 10  %}
+    {% if session.get("GameNumber") < 10 and session.get("Balance") > 0  %}
          <a class="action" href="{{ url_for('games.betting')}}">New Hand</a>
     {% else %}
          <a class="action" href="{{ url_for('games.finalScoring')}}">Get Final Score</a>

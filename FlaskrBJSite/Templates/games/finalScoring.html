@@ -2,6 +2,7 @@
 
 {% block content %}
 
+    <h2> {{session.get("Balance")}}</h2>
     {% if scoreNotSaved %}
         <form>
                <input type="submit" name="playerChoice" value="Save Score">
