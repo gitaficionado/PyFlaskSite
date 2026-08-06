@@ -4,9 +4,12 @@ class BlackJack:
 
     #creats and shuffles up a new game of blackjack
     #should deal out the inital cards
-    def __index__(self):
+    #this will need to be able to load itself up from a dictonary that it created so that it can be saved
+    def __init__(self, dictonaryLoadIn={}):
         pass
     def getCards(self):
+        pass
+    def getDealerCards(self):
         pass
     def hit(self):
         pass
@@ -15,4 +18,6 @@ class BlackJack:
     def didPlayerWin(self):
         pass
     def gameStillPlaying(self):
+        pass
+    def createDictonarySave(self):
         pass

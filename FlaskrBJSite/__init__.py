@@ -1,14 +1,16 @@
 import os
 
-from flask import Flas, Flask
+from flask import Flask
 from .Database import db
-# from behaviors.auth import *
+from .behaviors import auth
+from .behaviors.games import gamePage
+
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY='dev',
-        DATABASE=os.path.join(app.instance_path, 'flaskr.sqlite'),
+        DATABASE=os.path.join(app.instance_path, 'FlaskrBJSite.sqlite'),
     )
     if test_config is None:
         app.config.from_pyfile('config.py',silent=True)
@@ -20,8 +22,9 @@ def create_app(test_config=None):
     db.init_app(app)
 
     #Add in the stuff for adding blueprints
-
-    app.add_url_rule('/',endpoint='index') #this may need to change/update depending on which page we want to be the base page.
+    app.register_blueprint(auth.bp)
+    app.register_blueprint(gamePage.bp)
+    # app.add_url_rule('/',endpoint='index') #this may need to change/update depending on which page we want to be the base page.
 
 
     return app
