@@ -17,7 +17,11 @@ class BlackJack:
         pass
     def didPlayerWin(self):
         pass
+    def isGameTie(self):
+        pass
     def gameStillPlaying(self):
         pass
     def createDictonarySave(self):
         pass
+
+

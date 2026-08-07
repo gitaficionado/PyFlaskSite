@@ -62,7 +62,7 @@ def playing():#TODO: refactor to better use the tools provided
 def endOfHandHandler(bjGame):
     if bjGame.didPlayerWin():
         session[balance] += session[bettingAmount]
-    else:
+    elif not bjGame.isGameTie():
         session[balance] -= session[bettingAmount]
 
     session[gameNumber] += 1
