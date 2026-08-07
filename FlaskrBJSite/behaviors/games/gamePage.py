@@ -87,4 +87,4 @@ def finalScoring():
 
 def cardTranslating(cardList):
     cardPreamble = "images/cards/"
-    return [cardPreamble+"card_back.png"]
+    return [cardPreamble+"card_back.png",cardPreamble+"card_back.png"]

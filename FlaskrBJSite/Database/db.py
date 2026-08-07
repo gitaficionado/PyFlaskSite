@@ -79,3 +79,12 @@ def saveScore(user_id, score):
         return f"problem occured."
     else:
         return None
+def getLeaderBoard(amount = 10):
+    get_db()
+    return g.db.execute(
+        "Select TOP ? username, score "
+        "from leaderboard "
+        "join user on user.id = leaberboard.userID "
+        "order by score desc ",
+        (amount, )
+    ).fetchall()

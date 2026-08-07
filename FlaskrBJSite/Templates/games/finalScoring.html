@@ -3,10 +3,9 @@
 {% block content %}
 
     <h2> {{session.get("Balance")}}</h2>
-    {% if scoreNotSaved %}
-        <form>
-               <input type="submit" name="playerChoice" value="Save Score">
-        </form>
-    {% endif %}
+    <form>
+        <input type="submit" name="playerChoice" value="New Game">
+        <input type="submit" name="playerChoice" value="Back to Main">
+    </form>
 
 {% endblock %}
