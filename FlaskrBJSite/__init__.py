@@ -26,8 +26,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(gamePage.bp)
     app.register_blueprint(welcome.bp)
-    # app.add_url_rule("/", "welcome", welcome)
-    app.add_url_rule('/',endpoint='welcome') #this may need to change/update depending on which page we want to be the base page.
+   
 
 
     return app
