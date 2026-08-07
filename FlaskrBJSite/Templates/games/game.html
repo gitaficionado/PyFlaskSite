@@ -11,14 +11,14 @@
 <!--- this will also be extended, this should only need to handle the displaying of the cards --->
 <h2>testing this should be where the cards are</h2>
 {% for card in cards %}
-    <li><img src="{{ url_for('static', filename=card) }}"></li>
+<li><img src="{{ url_for('static', filename=card) }}"></li>
 {% endfor %}
 
 
-  <h2>Balance - {{session.get("Balance")}}</h2>
-  <h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
-  <h2>Game number - {{session.get("GameNumber")}}</h2>
+<h2>Balance - {{session.get("Balance")}}</h2>
+<h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
+<h2>Game number - {{session.get("GameNumber")}}</h2>
 <section class="playerInput">
- {% block playerInput %}{% endblock %}
+  {% block playerInput %}{% endblock %}
 </section>
 {% endblock %}
