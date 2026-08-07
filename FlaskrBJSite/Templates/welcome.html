@@ -1,15 +1,16 @@
-
 {% extends "base.html" %}
+{% block header %}
 
-{% block title %}Welcome to Blackjack{% endblock %}
+{% block header %}
+    <h1>{% block title %}Welcome to Blackjack{% endblock %}</h1>
+{% endblock %}
 
 {% block content %}
 
-<div class="welcome-container">
+    <div class="welcome-container">
 
-    <section class="welcome-header">
-
-        <h1>Welcome to Blackjack</h1>
+        <section class="welcome-introduction">
+            <h2>Blackjack</h2>
 
         <p>
             Try to beat the dealer by getting as close to 21 as possible
@@ -99,7 +100,7 @@
 
             <a
                 href="{{ url_for('auth.register') }}"
-                class="button secondary-button"
+                class="button"
             >
                 Register
             </a>
