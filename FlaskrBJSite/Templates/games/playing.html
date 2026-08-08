@@ -1,11 +1,33 @@
-{% extends 'games/game.html' %}
+{% extends "games/game.html" %}
+{% block title %}Playing Blackjack{% endblock %}
 
-<!--add buttons for hit and for stand-->
 {% block playerInput %}
 
-    <form method="post">
-        <input type="submit" name="playerChoice" value="Hit">
-        <input type="submit" name="playerChoice" value="Stay">
+    <h2>Choose your move</h2>
+
+    <p>Select Hit to receive another card or Stay to end your turn</p>
+
+    <form 
+        method="post"
+        action="{{ url_for('games.playing') }}"
+        class = "game-buttons">
+
+        <button
+            type="submit"
+            name="playerChoice"
+            value="Hit"
+            >
+            Hit
+            </button>
+
+        <button
+            type="submit"
+            name="playerChoice"
+            value="Stay"
+            >
+            Stay
+            </button>
+        
     </form>
 
 {% endblock %}
