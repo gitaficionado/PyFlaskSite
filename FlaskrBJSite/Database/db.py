@@ -82,9 +82,11 @@ def saveScore(user_id, score):
 def getLeaderBoard(amount = 10):
     get_db()
     return g.db.execute(
-        "Select TOP ? username, score "
+        "Select username, score "
         "from leaderboard "
-        "join user on user.id = leaberboard.userID "
-        "order by score desc ",
-        (amount, )
+        "join user on user.id = leaderboard.userId "
+        "order by score desc "
+        "Limit ?",
+        (amount, ),
+
     ).fetchall()

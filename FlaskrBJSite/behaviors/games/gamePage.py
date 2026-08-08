@@ -75,13 +75,16 @@ def endOfHandHandler(bjGame):
 def results():
     return render_template('games/results.html', cards = cardTranslating(None))
 
-@bp.route("/finalScoring")
+@bp.route("/finalScoring" ,methods=('GET','POST'))
 @login_required
 def finalScoring():
     if request.method == 'POST':
-        if request.form['playerChoice'] == "Save Score":
-            db.saveScore(session['user_id'],session[balance])
-            return render_template('games/finalScoring.html',scoreSaved = False)
+        db.saveScore(session['user_id'],session[balance])
+        if request.form['playerChoice'] == "New Game":
+            setupGameSession()
+            return redirect(url_for('games.betting'))
+        else:
+            return redirect(url_for('welcome'))
     return render_template('games/finalScoring.html',scoreSaved = True)
 
 

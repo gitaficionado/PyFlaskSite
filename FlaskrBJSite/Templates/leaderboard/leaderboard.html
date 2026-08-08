@@ -1,1 +1,10 @@
 {% extends 'base.html' %}
+
+{% block content %}
+
+{% for p in board %}
+<div>Player {{p['username']}} with score of {{p['score']}}</div>
+{% endfor %}
+
+
+{% endblock %}

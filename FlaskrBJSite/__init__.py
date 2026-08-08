@@ -5,6 +5,7 @@ from .Database import db
 from .behaviors import auth
 from .behaviors.games import gamePage
 from .behaviors import welcome
+from .behaviors import leaderboard
 
 
 def create_app(test_config=None):
@@ -26,7 +27,7 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
     app.register_blueprint(gamePage.bp)
     app.register_blueprint(welcome.bp)
-   
+    app.register_blueprint(leaderboard.bp)
 
 
     return app

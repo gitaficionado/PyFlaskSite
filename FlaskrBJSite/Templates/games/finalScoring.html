@@ -3,7 +3,7 @@
 {% block content %}
 
     <h2> {{session.get("Balance")}}</h2>
-    <form>
+    <form method="post">
         <input type="submit" name="playerChoice" value="New Game">
         <input type="submit" name="playerChoice" value="Back to Main">
     </form>
