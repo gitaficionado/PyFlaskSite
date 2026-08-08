@@ -83,10 +83,12 @@
                 Welcome back, <strong>{{ g.user["username"] }}</strong>!
             </p>
 
-                <form method="post">
+                <form
+                    action = "{{ url_for('welcome.welcome') }}"
+                    method="post"
+                    >
                       <input type="submit" value="Start Playing">
                 </form>
-            </a>
 
         {% else %}
 
