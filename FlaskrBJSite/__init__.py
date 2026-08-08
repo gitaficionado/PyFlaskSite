@@ -28,6 +28,6 @@ def create_app(test_config=None):
     app.register_blueprint(gamePage.bp)
     app.register_blueprint(welcome.bp)
     app.register_blueprint(leaderboard.bp)
-
+    app.add_url_rule('/',endpoint='welcome')
 
     return app
