@@ -51,7 +51,7 @@ def playing():#TODO: refactor to better use the tools provided
             game.hit()
             if game.gameStillPlaying():
                 session[BJGame] = game.createDictonarySave()
-                return redirect(url_for('games.playing.html'))
+                return redirect(url_for('games.playing'))
             else:
                 return endOfHandHandler(game)
         elif request.form['playerChoice'] == "Stay":
