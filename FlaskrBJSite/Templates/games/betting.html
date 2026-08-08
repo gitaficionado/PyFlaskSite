@@ -1,11 +1,34 @@
 {% extends 'games/game.html' %}
 
-<!--add buttons for hit and for stand-->
+{% block title %} Place Your Bet{% endblock %}
+
 {% block playerInput %}
-    <form method="post">
-        <label for="betting">Amount betting this round</label>
-        <input type="number" name="betting" id="betting" value="{{ request.form['betting']}}" required>
-        <input type="submit" value="save">
+
+    <h2>Place Your Bet</h2>
+
+    <p> Enter the amount you want to bet for this round. </p>
+
+    <form 
+        action = "{{ url_for('games.betting') }}"
+        method="post"
+        class ="betting-form"
+    >
+        
+        <label for="betting">Betting amount</label>
+        <input
+            type="number" 
+            name="betting" 
+            id="betting" 
+            min="1" 
+            value="{{ request.form.get('betting', '') }}" 
+            placeholder="Enter an amount" 
+            required
+            >
+
+        <button type="submit">
+            Start Game
+        </button>
+       
     </form>
 
 {% endblock %}
