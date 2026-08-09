@@ -10,16 +10,24 @@
 <!--- have a place for what images to show for the house and for the player--->
 <!--- this will also be extended, this should only need to handle the displaying of the cards --->
 <h2>Player Hand</h2>
-<ul class="card-row">
+<ul class="card-row" style="display: flex; flex-wrap: wrap; gap: 10px; list-style-type: none; padding: 0;">
   {% for card in playerCards %}
-  <li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
+  <li style="margin: 0; padding: 0;">
+    <!-- Inline styles force the image size instantly -->
+    <img src="{{ url_for('static', filename=card) }}"
+      style="width: 80px !important; height: 112px !important; object-fit: contain !important;">
+  </li>
   {% endfor %}
 </ul>
 
 <h2>Dealer Hand</h2>
-<ul class="card-row">
+<ul class="card-row" style="display: flex; flex-wrap: wrap; gap: 10px; list-style-type: none; padding: 0;">
   {% for card in dealerCards %}
-  <li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
+  <li style="margin: 0; padding: 0;">
+    <!-- Inline styles force the image size instantly -->
+    <img src="{{ url_for('static', filename=card) }}"
+      style="width: 80px !important; height: 112px !important; object-fit: contain !important;">
+  </li>
   {% endfor %}
 </ul>
 <h2>Balance - {{session.get("Balance")}}</h2>
