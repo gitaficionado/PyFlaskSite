@@ -225,3 +225,33 @@ input[type=submit]:hover {
     transform: translateY(-4px);
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
+
+
+/* 1. Fix the row layout */
+ul.card-row {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 12px !important;
+    list-style-type: none !important;
+    padding: 0 !important;
+    margin: 15px 0 !important;
+}
+
+/* 2. Lock the list item containers */
+ul.card-row li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: inline-block !important;
+}
+
+/* 3. Force the physical image to shrink instantly */
+ul.card-row li img.card {
+    width: 85px !important;
+    height: 120px !important;
+    max-width: 85px !important;
+    max-height: 120px !important;
+    object-fit: contain !important;
+    border-radius: 6px !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25) !important;
+}
