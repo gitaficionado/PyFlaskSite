@@ -286,11 +286,23 @@ div.content ul.card-row li img.card {
 
 .cards-row {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    flex-wrap: nowrap;
+    /* Forces cards to stay on one elegant row */
     list-style: none;
-    margin: 0 0 1rem 0;
+    margin: 0 0 1.5rem 0;
+    padding: 0 0 0 15px;
+    /* Adds minor left padding so the first card doesn't look cut off */
+}
+
+.cards-row li {
+    margin: 0;
     padding: 0;
+}
+
+/* The Magic Selector: Targets every card list item EXCEPT the first one */
+.cards-row li+li {
+    margin-left: -50px;
+    /* Adjust this number to control how tight the cards overlap */
 }
 
 .cards-row img {
@@ -298,4 +310,8 @@ div.content ul.card-row li img.card {
     width: 85px;
     height: 120px;
     object-fit: contain;
+    border-radius: 6px;
+    box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+    /* Shadow shifts left to emphasize layering */
+    background: none;
 }
