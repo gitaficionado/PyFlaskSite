@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
 {% block header %}
-    <h1>{% block title %}Welcome to Blackjack{% endblock %}</h1>
+<h1>{% block title %}Welcome to Blackjack{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
 
-    <div class="welcome-container">
+<div class="welcome-container">
 
-        <section class="welcome-introduction">
-            <h2>Blackjack</h2>
+    <section class="welcome-introduction">
+        <h2>Blackjack</h2>
 
         <p>
             Try to beat the dealer by getting as close to 21 as possible
-            without going over.
+            without going over!
         </p>
 
     </section>
@@ -79,37 +79,28 @@
 
         {% if g.user %}
 
-            <p>
-                Welcome back, <strong>{{ g.user["username"] }}</strong>!
-            </p>
+        <p>
+            Welcome back, <strong>{{ g.user["username"] }}</strong>!
+        </p>
 
-                <form
-                    action = "{{ url_for('welcome.welcome') }}"
-                    method="post"
-                    >
-                      <input type="submit" value="Start Playing">
-                </form>
+        <form action="{{ url_for('welcome.welcome') }}" method="post">
+            <input type="submit" value="Start Playing">
+        </form>
 
         {% else %}
 
-            <a
-                href="{{ url_for('auth.login') }}"
-                class="button"
-            >
-                Login
-            </a>
+        <a href="{{ url_for('auth.login') }}" class="button">
+            Login
+        </a>
 
-            <a
-                href="{{ url_for('auth.register') }}"
-                class="button"
-            >
-                Register
-            </a>
+        <a href="{{ url_for('auth.register') }}" class="button">
+            Register
+        </a>
 
-            <p>
-                Do not have an account?
-                Register to start playing.
-            </p>
+        <p>
+            Do not have an account?
+            Register to start playing.
+        </p>
 
         {% endif %}
 
