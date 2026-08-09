@@ -5,7 +5,7 @@ html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background: #f1f5f9;
     /* Toned down from bright neon blue for better contrast */
-    background: url('../images/table/felt_demo1.png') no-repeat center center fixed;
+    background: url('../images/table/geometric_felt.png') no-repeat center center fixed;
     padding: 1rem;
     box-sizing: border-box;
 }
