@@ -127,6 +127,22 @@ header .action {
     margin-bottom: 1em;
 }
 
+.card {
+    width: 60px;
+    /* Change from a larger size like 100px */
+    height: 90px;
+    /* Change from a larger size like 145px */
+    font-size: 14px;
+    /* Make text smaller if needed */
+    border-radius: 4px;
+}
+
+
+
+
+
+
+
 .content textarea {
     min-height: 12em;
     resize: vertical;
