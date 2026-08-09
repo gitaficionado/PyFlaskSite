@@ -46,6 +46,7 @@ def betting():
 @login_required
 def playing():#TODO: refactor to better use the tools provided
     game = BlackJack(session[BJGame])
+    print(game.getPlayerCards())
     if request.method == 'POST':
         if request.form['playerChoice'] == "Hit":
             game.hit()
@@ -57,7 +58,7 @@ def playing():#TODO: refactor to better use the tools provided
         elif request.form['playerChoice'] == "Stay":
             game.stand()
             return endOfHandHandler(game)
-    return render_template('games/playing.html',cards = cardTranslating(None))  # ''',cards = session[BJGame].getCards()'''
+    return render_template('games/playing.html',playerCards = cardTranslating(game.getPlayerCards()), dealerCards = cardTranslating(game.getDealerCards(),True))  # ''',cards = session[BJGame].getCards()'''
 
 def endOfHandHandler(bjGame):
     if bjGame.didPlayerWin():
@@ -73,7 +74,8 @@ def endOfHandHandler(bjGame):
 @bp.route('/results',methods=('GET','POST'))
 @login_required
 def results():
-    return render_template('games/results.html', cards = cardTranslating(None))
+    game = BlackJack(session[BJGame])
+    return render_template('games/results.html',playerCards = cardTranslating(game.getPlayerCards()), dealerCards = cardTranslating(game.getDealerCards()))
 
 @bp.route("/finalScoring" ,methods=('GET','POST'))
 @login_required
@@ -87,7 +89,36 @@ def finalScoring():
             return redirect(url_for('welcome'))
     return render_template('games/finalScoring.html',scoreSaved = True)
 
-
-def cardTranslating(cardList):
+suitTranslator = {
+    "Spades": "spades",
+    "Hearts":"hearts",
+    "Diamonds":"diamonds",
+    "Clubs":"clubs"
+}
+rantTranslator = {
+    "1":"1",
+    "2":"2",
+    "3":"3",
+    "4":"4",
+    "5":"5",
+    "6":"6",
+    "7":"7",
+    "8":"8",
+    "9":"9",
+    "10":"10",
+    "J":"jack",
+    "Q":"queen",
+    "K":"king",
+    "A":"ace"
+}
+def cardTranslating(cardList,hideFirst = False):
     cardPreamble = "images/cards/"
-    return [cardPreamble+"card_back.png",cardPreamble+"card_back.png"]
+
+    returnList = []
+    for card in cardList:
+        returnList.append(cardPreamble+suitTranslator[card[0]]+"_"+rantTranslator[card[1]]+".png")
+
+    if hideFirst:
+        returnList[0] = cardPreamble+"card_back.png"
+
+    return returnList
