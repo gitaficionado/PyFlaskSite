@@ -4,31 +4,21 @@
 
 {% block playerInput %}
 
-    <h2>Place Your Bet</h2>
+<h2>Place Your Bet</h2>
 
-    <p> Enter the amount you want to bet for this round. </p>
+<p> Enter your wager for this round.</p>
 
-    <form 
-        action = "{{ url_for('games.betting') }}"
-        method="post"
-        class ="betting-form"
-    >
-        
-        <label for="betting">Betting amount</label>
-        <input
-            type="number" 
-            name="betting" 
-            id="betting" 
-            min="1" 
-            value="{{ request.form.get('betting', '') }}" 
-            placeholder="Enter an amount" 
-            required
-            >
 
-        <button type="submit">
-            Start Game
-        </button>
-       
-    </form>
+<form action="{{ url_for('games.betting') }}" method="post" class="betting-form">
+
+    <label for="betting">Betting amount</label>
+    <input type="number" name="betting" id="betting" min="1" value="{{ request.form.get('betting', '') }}"
+        placeholder="Enter an amount" required>
+
+    <button type="submit">
+        Start Game
+    </button>
+
+</form>
 
 {% endblock %}
