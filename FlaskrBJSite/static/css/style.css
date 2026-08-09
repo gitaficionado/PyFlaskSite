@@ -327,46 +327,61 @@ div.content ul.card-row li img.card {
     gap: 1.5rem;
 }
 
-/* 1. Hero Aspect Ratio Section */
+
+/* 1. The main box sets the boundary grid */
 .hero-banner {
     position: relative;
+    /* Crucial: Locks the coordinate map for children */
     border-radius: 16px;
     overflow: hidden;
-    background: #121212;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.hero-image-wrapper {
+/* 2. The graphic rules */
+.hero-art {
     width: 100%;
     height: auto;
     aspect-ratio: 1000 / 370;
-    /* Matches the custom graphic dimensions exactly */
-    overflow: hidden;
-}
-
-.hero-art {
-    width: 100%;
-    height: 100%;
+    /* Fits the card graphic proportions perfectly */
     object-fit: cover;
     display: block;
 }
 
+/* 3. The Absolute Position Layer placing text over the image */
 .hero-text-overlay {
-    padding: 1.5rem;
-    background: linear-gradient(180deg, rgba(18, 18, 18, 0.4) 0%, rgba(18, 18, 18, 0.95) 100%);
+    position: absolute;
+    /* Pulls text out of natural flow and stacks it on top */
+    bottom: 0;
+    /* Aligns text tightly to the bottom boundary */
+    left: 0;
+    /* Aligns text tightly to the left boundary */
+    width: 100%;
+    /* Forces it to stretch completely across */
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+    /* Generous inside spacing */
+
+    /* Creates a dark gradient behind text so it remains highly readable on bright parts of the image */
+    background: linear-gradient(to top, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.4) 60%, rgba(18, 18, 18, 0) 100%);
+
+    /* Box-sizing ensures layout stays clean inside absolute elements */
+    box-sizing: border-box;
 }
 
+/* 4. Text adjustments */
 .hero-text-overlay h1 {
     font-family: system-ui, sans-serif;
     font-size: 2.25rem;
     font-weight: 800;
-    margin: 0 0 0.5rem 0;
+    color: #ffca28;
+    /* Casino gold matching your theme */
+    margin: 0 0 0.25rem 0;
 }
 
 .md-body-large {
-    font-size: 1.15rem;
-    color: #94a3b8;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    /* Crisp off-white text for ultimate contrast */
     margin: 0;
 }
 
