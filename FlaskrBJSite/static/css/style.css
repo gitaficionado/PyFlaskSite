@@ -3,9 +3,9 @@
    ========================================================================== */
 html {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: #f1f5f9;
-    /* Toned down from bright neon blue for better contrast */
+    /* Added background-size cover to ensure image scales beautifully */
     background: url('../images/table/geometric_felt.png') no-repeat center center fixed;
+    background-size: cover;
     padding: 1rem;
     box-sizing: border-box;
 }
@@ -19,13 +19,13 @@ html {
 body {
     max-width: 960px;
     margin: 0 auto;
-    /* Changed from solid white to a semi-transparent dark shade for a casino vibe */
-    background: rgba(15, 23, 42, 0.85);
-    /* Changed from dark slate to white so your text remains perfectly readable */
-    color: #ffffff;
+    /* Pure dark surface overlay that lets subtle green pass through */
+    background: rgba(18, 18, 18, 0.85);
+    color: #e2e8f0;
     line-height: 1.5;
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5);
 }
 
 h1,
@@ -34,13 +34,14 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: Georgia, Cambria, "Times New Roman", Times, serif;
-    color: #377ba8;
+    font-family: system-ui, sans-serif;
+    /* Gold accent color typical of high-end card games/Material accent */
+    color: #ffca28;
     margin: 1rem 0;
 }
 
 a {
-    color: #377ba8;
+    color: #4fc3f7;
     text-decoration: none;
 }
 
@@ -50,7 +51,7 @@ a:hover {
 
 hr {
     border: none;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
     margin: 1.5rem 0;
 }
 
@@ -58,10 +59,13 @@ hr {
    Navigation
    ========================================================================== */
 nav {
-    background: #e2e8f0;
+    /* Transparent container utilizing Material padding specs */
+    background: rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
-    padding: 0 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
 }
 
 nav h1 {
@@ -70,9 +74,8 @@ nav h1 {
 }
 
 nav h1 a {
-    color: #000000;
+    color: #ffca28;
     text-decoration: none;
-    padding: 0.25rem 0.5rem;
     display: inline-block;
 }
 
@@ -87,30 +90,27 @@ nav ul li a,
 nav ul li span,
 header .action {
     display: block;
-    color: #000000;
-    padding: 0.5rem;
+    color: #e2e8f0;
+    padding: 0.5rem 1rem;
 }
 
 /* ==========================================================================
    Main Content Layout
    ========================================================================== */
 .content {
-    padding: 0 1rem 1rem;
+    padding: 0;
 }
 
 .content>header {
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: flex-end;
+    padding-bottom: 0.5rem;
 }
 
 .content>header h1 {
     flex: auto;
     margin: 1rem 0 0.25rem 0;
-}
-
-.content:last-child {
-    margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -119,32 +119,18 @@ header .action {
 .flash {
     margin: 1em 0;
     padding: 1em;
-    background: #cae6f6;
-    border: 1px solid #377ba8;
-    border-radius: 4px;
+    background: rgba(79, 195, 247, 0.15);
+    border: 1px solid #4fc3f7;
+    border-radius: 8px;
+    color: #4fc3f7;
 }
 
 .post {
     margin-bottom: 2rem;
 }
 
-.post>header {
-    display: flex;
-    align-items: flex-end;
-    font-size: 0.85em;
-}
-
-.post>header>div:first-of-type {
-    flex: auto;
-}
-
-.post>header h1 {
-    font-size: 1.5em;
-    margin-bottom: 0;
-}
-
 .post .about {
-    color: #64748b;
+    color: #94a3b8;
     font-style: italic;
 }
 
@@ -163,46 +149,55 @@ header .action {
 }
 
 .content label {
-    font-weight: bold;
+    font-weight: 500;
     margin-bottom: 0.5em;
+    color: #94a3b8;
 }
 
 .content input,
 .content textarea {
     margin-bottom: 1em;
-    padding: 0.5rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 4px;
+    padding: 0.75rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
 }
 
-.content textarea {
-    min-height: 12em;
-    resize: vertical;
+.content input:focus,
+.content textarea:focus {
+    outline: none;
+    border-color: #ffca28;
 }
 
 input.danger {
-    color: #cc2f2e;
-    border-color: #cc2f2e;
+    color: #ef5350;
+    border-color: #ef5350;
+    background: rgba(239, 83, 80, 0.1);
 }
 
 input[type=submit] {
     align-self: start;
     min-width: 10em;
-    background: #377ba8;
-    color: white;
+    background: #ffca28;
+    color: #121212;
     border: none;
+    border-radius: 24px;
+    /* Material Design pill-shaped button */
+    padding: 0.75rem 1.5rem;
     cursor: pointer;
     font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: background 0.2s;
 }
 
 input[type=submit]:hover {
-    background: #2a5d80;
+    background: #ffe082;
 }
 
 /* ==========================================================================
    Responsive Card System
    ========================================================================== */
-/* Container that holds the row of cards */
 .card-row {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -212,27 +207,26 @@ input[type=submit]:hover {
     margin: 1.5rem 0;
 }
 
-/* Individual card styling */
 .card {
-    background: #f3efef;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
+    /* Styled as higher elevation surfaces in dark mode */
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
     padding: 1.5rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
-/* Optional hover effect to make cards interactive */
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
 }
 
-
-/* 1. Fix the row layout */
+/* Blackjack Played Card Overrides */
 ul.card-row {
     display: flex !important;
     flex-wrap: wrap !important;
@@ -242,7 +236,6 @@ ul.card-row {
     margin: 15px 0 !important;
 }
 
-/* 2. Lock the list item containers */
 ul.card-row li {
     list-style: none !important;
     margin: 0 !important;
@@ -250,7 +243,6 @@ ul.card-row li {
     display: inline-block !important;
 }
 
-/* 3. Force the physical image to shrink instantly */
 ul.card-row li img.card {
     width: 85px !important;
     height: 120px !important;
@@ -258,7 +250,10 @@ ul.card-row li img.card {
     max-height: 120px !important;
     object-fit: contain !important;
     border-radius: 6px !important;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25) !important;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5) !important;
+    background: none !important;
+    border: none !important;
+    padding: 0 !important;
 }
 
 .cards-row {
@@ -270,14 +265,9 @@ ul.card-row li img.card {
     padding: 0;
 }
 
-.cards-row li {
-    margin: 0;
-}
-
 .cards-row img {
     display: block;
     width: 85px;
     height: 120px;
     object-fit: contain;
-    max-width: 100px;
 }
