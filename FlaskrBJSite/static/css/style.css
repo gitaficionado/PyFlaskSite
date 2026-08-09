@@ -19,9 +19,13 @@ html {
 body {
     max-width: 960px;
     margin: 0 auto;
-    background: white;
-    color: #1e293b;
+    /* Changed from solid white to a semi-transparent dark shade for a casino vibe */
+    background: rgba(15, 23, 42, 0.85);
+    /* Changed from dark slate to white so your text remains perfectly readable */
+    color: #ffffff;
     line-height: 1.5;
+    border-radius: 12px;
+    padding: 1rem;
 }
 
 h1,
