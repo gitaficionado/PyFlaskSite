@@ -271,6 +271,8 @@ ul.card-row li img.card {
 
 .cards-row img {
     display: block;
-    height: auto;
+    width: 85px;
+    height: 120px;
+    object-fit: contain;
     max-width: 100px;
 }

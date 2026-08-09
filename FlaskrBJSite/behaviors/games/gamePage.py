@@ -93,7 +93,11 @@ suitTranslator = {
     "Spades": "spades",
     "Hearts":"hearts",
     "Diamonds":"diamonds",
-    "Clubs":"clubs"
+    "Clubs":"clubs",
+    "spades": "spades",
+    "hearts": "hearts",
+    "diamonds": "diamonds",
+    "clubs": "clubs"
 }
 rantTranslator = {
     "1":"1",
@@ -109,16 +113,30 @@ rantTranslator = {
     "J":"jack",
     "Q":"queen",
     "K":"king",
-    "A":"ace"
+    "A":"ace",
+    "j":"jack",
+    "q":"queen",
+    "k":"king",
+    "a":"ace"
 }
-def cardTranslating(cardList,hideFirst = False):
+
+def cardTranslating(cardList, hideFirst=False):
     cardPreamble = "images/cards/"
-
     returnList = []
-    for card in cardList:
-        returnList.append(cardPreamble+suitTranslator[card[0]]+"_"+rantTranslator[card[1]]+".png")
 
-    if hideFirst:
-        returnList[0] = cardPreamble+"card_back.png"
+    for card in cardList or []:
+        suit = card[0] if len(card) > 0 else ''
+        rank = card[1] if len(card) > 1 else ''
+
+        suitKey = suitTranslator.get(suit, suit.lower() if isinstance(suit, str) else '')
+        rankKey = rantTranslator.get(rank, rank.lower() if isinstance(rank, str) else '')
+
+        if suitKey and rankKey:
+            returnList.append(f"{cardPreamble}{suitKey}_{rankKey}.png")
+        else:
+            returnList.append(f"{cardPreamble}card_back.png")
+
+    if hideFirst and returnList:
+        returnList[0] = cardPreamble + "card_back.png"
 
     return returnList
