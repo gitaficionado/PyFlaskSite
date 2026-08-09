@@ -145,7 +145,7 @@ header .action {
 
 /* Individual card styling */
 .card {
-    width: 80px;
+    width: 20px;
     /* Perfect standard desktop width */
     height: 112px;
     /* Matches the 1:1.4 physical card ratio */
