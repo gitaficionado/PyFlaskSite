@@ -209,7 +209,7 @@ input[type=submit]:hover {
 
 /* Individual card styling */
 .card {
-    background: #ffffff;
+    background: #f3efef;
     border: 1px solid #e2e8f0;
     border-radius: 8px;
     padding: 1.5rem;
