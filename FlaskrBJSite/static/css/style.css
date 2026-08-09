@@ -140,3 +140,22 @@ input[type=submit] {
     align-self: start;
     min-width: 10em;
 }
+
+.cards-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0 0 1rem 0;
+    padding: 0;
+}
+
+.cards-row li {
+    margin: 0;
+}
+
+.cards-row img {
+    display: block;
+    height: auto;
+    max-width: 100px;
+}
