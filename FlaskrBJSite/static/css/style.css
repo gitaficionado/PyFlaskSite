@@ -351,21 +351,27 @@ div.content ul.card-row li img.card {
 /* 3. The Absolute Position Layer placing text over the image */
 .hero-text-overlay {
     position: absolute;
-    /* Pulls text out of natural flow and stacks it on top */
+    /* Keeps text layered directly over the image */
     bottom: 0;
-    /* Aligns text tightly to the bottom boundary */
-    left: 0;
-    /* Aligns text tightly to the left boundary */
-    width: 100%;
-    /* Forces it to stretch completely across */
-    padding: 2rem 1.5rem 1.5rem 1.5rem;
-    /* Generous inside spacing */
+    /* Aligns text container to the bottom boundary */
+    right: 0;
+    /* CHANGED: Pulls the text overlay to the right edge */
+    width: 50%;
+    /* CHANGED: Restricts the text to the right half of the banner */
+    height: 100%;
+    /* NEW: Stretches the overlay from top to bottom */
 
-    /* Creates a dark gradient behind text so it remains highly readable on bright parts of the image */
-    background: linear-gradient(to top, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.4) 60%, rgba(18, 18, 18, 0) 100%);
+    /* Center your text vertically inside the right half of the banner */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
-    /* Box-sizing ensures layout stays clean inside absolute elements */
+    padding: 2rem;
     box-sizing: border-box;
+
+
+    background: linear-gradient(to left, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.6) 70%, rgba(18, 18, 18, 0) 100%);
+}
 }
 
 /* 4. Text adjustments */
