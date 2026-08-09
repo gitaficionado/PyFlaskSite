@@ -145,7 +145,7 @@ header .action {
 
 /* Individual card styling */
 .card {
-    width: 20px;
+    width: 80px;
     /* Perfect standard desktop width */
     height: 112px;
     /* Matches the 1:1.4 physical card ratio */
@@ -153,7 +153,7 @@ header .action {
     /* Smooth rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     /* Soft shadow makes them pop */
-    object-fit: cover;
+    object-fit: contain;
     /* Prevents image distortion */
 }
 
