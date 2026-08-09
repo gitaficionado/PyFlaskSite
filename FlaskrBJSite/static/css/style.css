@@ -252,35 +252,37 @@ input[type=submit]:hover {
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* Blackjack Played Card Overrides */
-ul.card-row {
-    display: flex !important;
-    flex-wrap: wrap !important;
-    gap: 12px !important;
-    list-style-type: none !important;
-    padding: 0 !important;
-    margin: 15px 0 !important;
+div.content ul.card-row {
+    display: flex;
+    flex-wrap: wrap;
+    grid-template-columns: none;
+    /* Disables the grid structure cleanly */
+    gap: 12px;
+    list-style-type: none;
+    padding: 0;
+    margin: 15px 0;
 }
 
-ul.card-row li {
-    list-style: none !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    display: inline-block !important;
+div.content ul.card-row li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-ul.card-row li img.card {
-    width: 85px !important;
-    height: 120px !important;
-    max-width: 85px !important;
-    max-height: 120px !important;
-    object-fit: contain !important;
-    border-radius: 6px !important;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5) !important;
-    background: none !important;
-    border: none !important;
-    padding: 0 !important;
+/* Specific styling for the card image assets on the table */
+div.content ul.card-row li img.card {
+    width: 85px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 6px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+
+    /* Resetting generic .card properties that don't belong on images */
+    background: none;
+    border: none;
+    padding: 0;
 }
+
 
 .cards-row {
     display: flex;
