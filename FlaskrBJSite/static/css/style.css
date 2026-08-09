@@ -127,16 +127,35 @@ header .action {
     margin-bottom: 1em;
 }
 
-.card {
-    width: 60px;
-    /* Change from a larger size like 100px */
-    height: 90px;
-    /* Change from a larger size like 145px */
-    font-size: 14px;
-    /* Make text smaller if needed */
-    border-radius: 4px;
+/* Container that holds the row of cards */
+.card-row {
+    display: flex;
+    /* Lines cards up horizontally */
+    flex-wrap: wrap;
+    /* Moves cards to next line if screen is too small */
+    gap: 10px;
+    /* Creates perfect even gaps between cards */
+    list-style-type: none;
+    /* Removes the default bullet points from <li> */
+    padding: 0;
+    /* Removes default list indentation */
+    margin-bottom: 20px;
+    /* Adds space before the next section */
 }
 
+/* Individual card styling */
+.card {
+    width: 80px;
+    /* Perfect standard desktop width */
+    height: 112px;
+    /* Matches the 1:1.4 physical card ratio */
+    border-radius: 6px;
+    /* Smooth rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Soft shadow makes them pop */
+    object-fit: cover;
+    /* Prevents image distortion */
+}
 
 
 

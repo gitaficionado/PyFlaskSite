@@ -9,20 +9,19 @@
 
 <!--- have a place for what images to show for the house and for the player--->
 <!--- this will also be extended, this should only need to handle the displaying of the cards --->
-<h2>testing this should be where the cards are</h2>
-{% for card in playerCards %}
-<li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
-//<li><img src="{{ url_for('static', filename=card) }}"></li>
-{% endfor %}
+<h2>Player Hand</h2>
+<ul class="card-row">
+  {% for card in playerCards %}
+  <li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
+  {% endfor %}
+</ul>
 
-<h2> dealer cards</h2>
-
-{% for card in dealerCards %}
-#testing img class
-<li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
-
-//<li><img src="{{ url_for('static', filename=card) }}"></li>
-{% endfor %}
+<h2>Dealer Hand</h2>
+<ul class="card-row">
+  {% for card in dealerCards %}
+  <li><img class="card" src="{{ url_for('static', filename=card) }}"></li>
+  {% endfor %}
+</ul>
 <h2>Balance - {{session.get("Balance")}}</h2>
 <h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
 <h2>Game number - {{session.get("GameNumber")}}</h2>
