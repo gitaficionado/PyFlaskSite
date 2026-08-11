@@ -75,7 +75,15 @@ def endOfHandHandler(bjGame):
 @login_required
 def results():
     game = BlackJack(session[BJGame])
-    return render_template('games/results.html',playerCards = cardTranslating(game.getPlayerCards()), dealerCards = cardTranslating(game.getDealerCards()))
+    resultMessage = ""
+    if game.didPlayerWin():
+        resultMessage = "You win the hand"
+    elif not game.isGameTie():
+        resultMessage = "Tie"
+    else:
+        resultMessage = "You Lost the hand"
+
+    return render_template('games/results.html',playerCards = cardTranslating(game.getPlayerCards()), dealerCards = cardTranslating(game.getDealerCards()), didPlayerWin = resultMessage)
 
 @bp.route("/finalScoring" ,methods=('GET','POST'))
 @login_required
