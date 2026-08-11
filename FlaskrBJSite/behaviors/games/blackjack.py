@@ -108,6 +108,7 @@ class Hand:
         self.value = 0
         for c in self.cards:
             self.value += c.getCardValue()
+        self.adjust_for_ace()
         return self.value
 
     def getAces(self):
@@ -116,15 +117,15 @@ class Hand:
     def addCard(self, card):
         self.cards.append(card)
         # recompute value of the hand after adding the card by calling getValue() before adjusting for ace
-        self.getValue()
         if card.getRank() == "A":
             self.aces += 1
-        self.adjust_for_ace()
+        self.getValue()
+
 
     def adjust_for_ace(self):
-        while self.value > 21 and self.aces:
-            self.value -= 10
-            self.aces -= 1
+        for i in range(self.aces):
+            while self.value > 21 and self.aces:
+                self.value -= 10
 
     # Returns the Hand as a list of [suit, rank] card lists
     def toList(self):
