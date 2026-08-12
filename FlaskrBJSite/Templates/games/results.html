@@ -1,15 +1,48 @@
-
 {% extends 'games/game.html' %}
 
 {% block playerInput %}
-    <h3>{{didPlayerWin}}</h3>
+
+<section class="results-box">
+
+  <h2>Hand Result</h2>
+
+  {% if didPlayerWin == "You win the hand" %}
+
+  <h3 class="win">
+    You won the hand!
+  </h3>
+
+  {% elif didPlayerWin == "Tie" %}
+
+  <h3 class="lose">
+    You lost the hand.
+  </h3>
+
+  {% elif didPlayerWin == "You Lost the hand" %}
+
+  <h3 class="tie">
+    The hand is a tie.
+  </h3>
+
+  {% else %}
+
+  <h3>
+    {{didPlayerWin}}
+  </h3>
+
+  {% endif %}
 
 
-    <form method="post">
-    {% if session.get("GameNumber") < 10 and session.get("Balance") > 0  %}
-         <a class="action" href="{{ url_for('games.betting')}}">New Hand</a>
-    {% else %}
-         <a class="action" href="{{ url_for('games.finalScoring')}}">Get Final Score</a>
-    {% endif %}
-    </form>
+  {% if session.get("GameNumber") < 10 and session.get("Balance") > 0 %}
+
+  <a class="action" href="{{ url_for('games.betting') }}">New Hand</a>
+
+  {% else %}
+
+  <a class="action" href="{{ url_for('games.finalScoring') }}">Get Final Score</a>
+
+  {% endif %}
+
+</section>
+
 {% endblock %}

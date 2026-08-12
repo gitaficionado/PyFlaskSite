@@ -315,3 +315,15 @@ div.content ul.card-row li img.card {
     /* Shadow shifts left to emphasize layering */
     background: none;
 }
+
+/* Hide the arrows in the betting number box */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+}

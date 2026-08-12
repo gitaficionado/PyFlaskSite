@@ -1,24 +1,36 @@
-{% extends 'games/game.html' %}
+{% extends 'base.html' %}
 
-{% block title %} Place Your Bet{% endblock %}
+{% block header %}
+<h1>Place Your Bet</h1>
+{% endblock %}
 
-{% block playerInput %}
+{% block content %}
 
-<h2>Place Your Bet</h2>
+<section class="betting-box">
 
-<p> Enter your wager for this round.</p>
+  <h2>Current Balance: ${{session.get("Balance")}}</h2>
 
+  <p>Hands completed: {{session.get("GameNumber")}} of 10</p>
 
-<form action="{{ url_for('games.betting') }}" method="post" class="betting-form">
+  <form action="{{ url_for('games.betting') }}" method="post" class="betting-form">
 
-    <label for="betting">Betting amount</label>
-    <input type="number" name="betting" id="betting" min="1" value="{{ request.form.get('betting', '') }}"
-        placeholder="Enter an amount" required>
+    <label for="betting">Betting Amount</label>
 
-    <button type="submit">
-        Start Game
-    </button>
+    <input
+      type="number"
+      name="betting"
+      id="betting"
+      min="1"
+      max="{{session.get('Balance')}}"
+      step="1"
+      value="{{ request.form.get('betting', '') }}"
+      placeholder="Enter an amount"
+      required>
 
-</form>
+    <button type="submit">Start Hand</button>
+
+  </form>
+
+</section>
 
 {% endblock %}

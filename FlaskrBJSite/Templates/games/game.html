@@ -9,23 +9,63 @@
 
 <!--- have a place for what images to show for the house and for the player--->
 <!--- this will also be extended, this should only need to handle the displaying of the cards --->
-<h2>Your cards</h2>
-<ul class="cards-row">
-  {% for card in playerCards %}
-  <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
-  {% endfor %}
-</ul>
 
-<h2>Dealer cards</h2>
-<ul class="cards-row">
-  {% for card in dealerCards %}
-  <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
-  {% endfor %}
-</ul>
-<h2>Balance - {{session.get("Balance")}}</h2>
-<h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
-<h2>Game number - {{1+session.get("GameNumber")}}</h2>
-<section class="playerInput">
-  {% block playerInput %}{% endblock %}
+<section class="blackjack-table">
+
+  <!--- show the dealer cards at the top of the table --->
+  <section class="dealer-area">
+
+    <h2>Dealer cards</h2>
+
+    <ul class="cards-row">
+      {% for card in dealerCards %}
+      <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
+      {% endfor %}
+    </ul>
+
+  </section>
+
+
+  <!--- show the player cards closer to the player --->
+  <section class="player-area">
+
+    <h2>Your cards</h2>
+
+    <ul class="cards-row">
+      {% for card in playerCards %}
+      <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
+      {% endfor %}
+    </ul>
+
+  </section>
+
+
+  <!--- show the current information for the game --->
+  <section class="game-information">
+
+    <p>
+      <span class="info-label">Balance</span>
+      <strong>${{session.get("Balance")}}</strong>
+    </p>
+
+    <p>
+      <span class="info-label">Amount Bet</span>
+      <strong>${{session.get("BettingAmount")}}</strong>
+    </p>
+
+    <p>
+      <span class="info-label">Hands Completed</span>
+      <strong>{{session.get("GameNumber")}} of 10</strong>
+    </p>
+
+  </section>
+
+
+  <!--- show the buttons or results from the extended page --->
+  <section class="playerInput">
+    {% block playerInput %}{% endblock %}
+  </section>
+
 </section>
+
 {% endblock %}
