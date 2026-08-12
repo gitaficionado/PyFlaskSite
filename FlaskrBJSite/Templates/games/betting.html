@@ -1,44 +1,36 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 {% block header %}
-    <h1>Place Your Bet</h1>
+<h1>Place Your Bet</h1>
 {% endblock %}
 
 {% block content %}
 
-    <section class="betting-box">
+<section class="betting-box">
 
-        <h2>Current Balance: ${{ session.get("Balance", 0) }}</h2>
+  <h2>Current Balance: ${{session.get("Balance")}}</h2>
 
-        <p>
-            Hands completed:
-            {{ session.get("GameNumber", 0) }} of 10
-        </p>
+  <p>Hands completed: {{session.get("GameNumber")}} of 10</p>
 
-        <form
-            action="{{ url_for('games.betting') }}"
-            method="post"
-            class="betting-form">
+  <form action="{{ url_for('games.betting') }}" method="post" class="betting-form">
 
-            <label for="betting">Betting Amount</label>
+    <label for="betting">Betting Amount</label>
 
-            <input
-                type="number"
-                name="betting"
-                id="betting"
-                min="1"
-                step="1"
-                max="{{ session.get('Balance', 0) }}"
-                value="{{ request.form.get('betting', '1') }}"
-                placeholder="Enter amount"
-                required>
+    <input
+      type="number"
+      name="betting"
+      id="betting"
+      min="1"
+      max="{{session.get('Balance')}}"
+      step="1"
+      value="{{ request.form.get('betting', '') }}"
+      placeholder="Enter an amount"
+      required>
 
-            <button type="submit">
-                Start Hand
-            </button>
+    <button type="submit">Start Hand</button>
 
-        </form>
+  </form>
 
-    </section>
+</section>
 
 {% endblock %}
