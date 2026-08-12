@@ -700,72 +700,48 @@ div.content ul.card-row li img.card {
     background: #ef5350;
 }
 
-
 /* ==========================================================================
-   Blackjack Button Form Container Alignment Rules
+   Blackjack Button Styling & Micro-Interactions
    ========================================================================== */
-.blackjack-container {
-    display: flex;
-    gap: 2.5rem;
-    align-items: flex-start;
-    width: 100%;
-    margin-top: 1.5rem;
+
+/* 1. Base button modifications for smooth movement transitions */
+.game-sidebar .playerInput input[type=submit] {
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.15s ease;
 }
 
-.blackjack-container .cards-display {
-    flex: 1 1 65%;
-    min-width: 0;
+/* 2. Micro-interaction: Scale button up slightly on hover and boost elevation shadow */
+.game-sidebar .playerInput input[type=submit]:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-.blackjack-container .game-sidebar {
-    flex: 1 1 35%;
-    min-width: 260px;
-    background: rgba(255, 255, 255, .05);
-    border: 1px solid rgba(255, 255, 255, .1);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+/* 3. Micro-interaction: Compress downward slightly when clicked */
+.game-sidebar .playerInput input[type=submit]:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-.blackjack-container .game-sidebar .playerInput form {
-    display: flex;
-    justify-content: center;
-    /* or flex-start */
-    align-items: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-    margin: 0;
+/* 4. "Hit" Button Style Identity: Rich Casino Green */
+.game-sidebar .playerInput input[type=submit][value="Hit"] {
+    background-color: #4caf50;
+    color: #ffffff;
 }
 
-.blackjack-container .game-sidebar .playerInput input[type="submit"],
-.blackjack-container .game-sidebar .playerInput button {
-    width: auto;
-    min-width: 7.5em;
-    max-width: 10em;
-    padding: .65rem 1.25rem;
-    border: none;
-    border-radius: 24px;
-    font-weight: 700;
-    cursor: pointer;
+.game-sidebar .playerInput input[type=submit][value="Hit"]:hover {
+    background-color: #66bb6a;
+    /* Brightens up beautifully on hover */
 }
 
-.blackjack-container .game-sidebar .playerInput .btn-hit {
-    background: #4caf50;
-    color: #fff;
+/* 5. "Stay" Button Style Identity: Velvet Crimson Red */
+/* Note: If your button text says "Stand", change [value="Stay"] to [value="Stand"] below */
+.game-sidebar .playerInput input[type=submit][value="Stay"],
+.game-sidebar .playerInput input[type=submit][value="Stand"] {
+    background-color: #e53935;
+    color: #ffffff;
 }
 
-.blackjack-container .game-sidebar .playerInput .btn-hit:hover {
-    background: #66bb6a;
-}
-
-.blackjack-container .game-sidebar .playerInput .btn-stand {
-    background: #e53935;
-    color: #fff;
-}
-
-.blackjack-container .game-sidebar .playerInput .btn-stand:hover {
-    background: #ef5350;
+.game-sidebar .playerInput input[type=submit][value="Stay"]:hover,
+.game-sidebar .playerInput input[type=submit][value="Stand"]:hover {
+    background-color: #ef5350;
+    /* Brightens up beautifully on hover */
 }
