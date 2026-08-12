@@ -2,8 +2,7 @@
    Global Styles & Variables
    ========================================================================== */
 html {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    /* 1. This matches your image color perfectly and stops the initial white flash */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     background-color: #2e6930;
     padding: 1rem;
     box-sizing: border-box;
@@ -11,25 +10,17 @@ html {
     min-height: 100vh;
 }
 
-/* 2. Seamless fade-in layer for the felt texture */
 html::before {
     content: "";
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: url('../images/table/geometric_felt.png') no-repeat center center;
+    inset: 0;
+    background: url("../images/table/geometric_felt.png") no-repeat center center;
     background-size: cover;
     z-index: -1;
-    /* Keeps it behind your text/body content */
-
-    /* Animation settings: 0.4 seconds smooth opacity transition */
     opacity: 0;
     animation: fadeInBackground 0.4s ease-in-out forwards;
 }
 
-/* 3. The animation instruction */
 @keyframes fadeInBackground {
     to {
         opacity: 1;
@@ -45,7 +36,6 @@ html::before {
 body {
     max-width: 960px;
     margin: 0 auto;
-    /* Pure dark surface overlay that lets subtle green pass through */
     background: rgba(18, 18, 18, 0.85);
     color: #e2e8f0;
     line-height: 1.5;
@@ -61,7 +51,6 @@ h4,
 h5,
 h6 {
     font-family: system-ui, sans-serif;
-    /* Gold accent color typical of high-end card games/Material accent */
     color: #ffca28;
     margin: 1rem 0;
 }
@@ -85,7 +74,6 @@ hr {
    Navigation
    ========================================================================== */
 nav {
-    /* Transparent container utilizing Material padding specs */
     background: rgba(255, 255, 255, 0.05);
     display: flex;
     align-items: center;
@@ -140,7 +128,7 @@ header .action {
 }
 
 /* ==========================================================================
-   Components (Flash Messages & Posts)
+   Components
    ========================================================================== */
 .flash {
     margin: 1em 0;
@@ -202,14 +190,13 @@ input.danger {
     background: rgba(239, 83, 80, 0.1);
 }
 
-input[type=submit] {
+input[type="submit"] {
     align-self: start;
     min-width: 10em;
     background: #ffca28;
     color: #121212;
     border: none;
     border-radius: 24px;
-    /* Material Design pill-shaped button */
     padding: 0.75rem 1.5rem;
     cursor: pointer;
     font-weight: bold;
@@ -217,81 +204,30 @@ input[type=submit] {
     transition: background 0.2s;
 }
 
-input[type=submit]:hover {
+input[type="submit"]:hover {
     background: #ffe082;
 }
 
-/* ==========================================================================
-   Responsive Card System
-   ========================================================================== */
-.card-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.5rem;
-    list-style-type: none;
-    padding: 0;
-    margin: 1.5rem 0;
-}
-
-.card {
-    /* Styled as higher elevation surfaces in dark mode */
-    background: rgba(255, 255, 255, 0.07);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    background: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
-}
-
-div.content ul.card-row {
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: none;
-    /* Disables the grid structure cleanly */
-    gap: 12px;
-    list-style-type: none;
-    padding: 0;
-    margin: 15px 0;
-}
-
-div.content ul.card-row li {
-    list-style: none;
+/* Hide number input arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
     margin: 0;
-    padding: 0;
 }
 
-/* Specific styling for the card image assets on the table */
-div.content ul.card-row li img.card {
-    width: 85px;
-    height: 120px;
-    object-fit: contain;
-    border-radius: 6px;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
-
-    /* Resetting generic .card properties that don't belong on images */
-    background: none;
-    border: none;
-    padding: 0;
+input[type="number"] {
+    appearance: textfield;
 }
 
-
+/* ==========================================================================
+   Card Display
+   ========================================================================== */
 .cards-row {
     display: flex;
     flex-wrap: nowrap;
-    /* Forces cards to stay on one elegant row */
     list-style: none;
     margin: 0 0 1.5rem 0;
     padding: 0 0 0 15px;
-    /* Adds minor left padding so the first card doesn't look cut off */
 }
 
 .cards-row li {
@@ -299,10 +235,8 @@ div.content ul.card-row li img.card {
     padding: 0;
 }
 
-/* The Magic Selector: Targets every card list item EXCEPT the first one */
 .cards-row li+li {
     margin-left: -50px;
-    /* Adjust this number to control how tight the cards overlap */
 }
 
 .cards-row img {
@@ -312,86 +246,58 @@ div.content ul.card-row li img.card {
     object-fit: contain;
     border-radius: 6px;
     box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
-    /* Shadow shifts left to emphasize layering */
     background: none;
 }
 
 /* ==========================================================================
-   Material Welcome Screen & Hero Banner System
+   Welcome / Hero
    ========================================================================== */
-
-/* Layout Framework */
 .welcome-container {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
 }
 
-
-/* 1. The main box sets the boundary grid */
 .hero-banner {
     position: relative;
-    /* Crucial: Locks the coordinate map for children */
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* 2. The graphic rules */
 .hero-art {
     width: 100%;
     height: auto;
     aspect-ratio: 1000 / 370;
-    /* Fits the card graphic proportions perfectly */
     object-fit: cover;
     display: block;
 }
 
-/* 3. The Absolute Position Layer placing text over the image */
 .hero-text-overlay {
     position: absolute;
-    /* Keeps text layered directly over the image */
-    bottom: 0;
-    /* Aligns text container to the bottom boundary */
-    right: 0;
-    /* CHANGED: Pulls the text overlay to the right edge */
+    inset: 0 0 0 auto;
     width: 50%;
-    /* CHANGED: Restricts the text to the right half of the banner */
-    height: 100%;
-    /* NEW: Stretches the overlay from top to bottom */
-
-    /* Center your text vertically inside the right half of the banner */
     display: flex;
     flex-direction: column;
     justify-content: center;
-
     padding: 2rem;
-    box-sizing: border-box;
-
-
     background: linear-gradient(to left, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.6) 70%, rgba(18, 18, 18, 0) 100%);
 }
 
-
-/* 4. Text adjustments */
 .hero-text-overlay h1 {
-    font-family: system-ui, sans-serif;
     font-size: 2.25rem;
     font-weight: 800;
     color: #ffca28;
-    /* Casino gold matching your theme */
     margin: 0 0 0.25rem 0;
 }
 
 .md-body-large {
     font-size: 1.1rem;
     color: #e2e8f0;
-    /* Crisp off-white text for ultimate contrast */
     margin: 0;
 }
 
-/* 2. Material Design Grid Structure */
 .md-grid-layout {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -404,7 +310,6 @@ div.content ul.card-row li img.card {
     gap: 1.5rem;
 }
 
-/* 3. Surface Card Containers */
 .md-card {
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -414,14 +319,11 @@ div.content ul.card-row li img.card {
 }
 
 .md-card h2 {
-    font-family: system-ui, sans-serif;
     font-size: 1.35rem;
     font-weight: 600;
-    margin-top: 0;
-    margin-bottom: 1.25rem;
+    margin: 0 0 1.25rem 0;
 }
 
-/* 4. Action Target Row Styles */
 .primary-action-card {
     background: rgba(255, 202, 40, 0.05);
     border-color: rgba(255, 202, 40, 0.2);
@@ -448,7 +350,6 @@ div.content ul.card-row li img.card {
     justify-content: center;
 }
 
-/* 5. Typography/Lists Cleanup */
 .md-list {
     padding-left: 1.25rem;
     margin: 0;
@@ -470,7 +371,6 @@ div.content ul.card-row li img.card {
     margin: 0;
 }
 
-/* 6. Pure Button Classes */
 .md-btn-filled,
 .md-btn-primary {
     background: #ffca28;
@@ -513,257 +413,136 @@ div.content ul.card-row li img.card {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: #64748b;
+}
 
-    /*Hide the arrows in the betting number box*/
-    input[type="number"]::-webkit-inner-spin-button,
-    input[type="number"]::-webkit-outer-spin-button {
-        appearance: none;
-        margin: 0;
-    }
-
-    input[type="number"] {
-        appearance: textfield;
-    }
-
-    /* ==========================================================================
-   Blackjack Split Table Layout (Side-by-Side)
+/* ==========================================================================
+   Blackjack Layout (Centered Betting Area)
    ========================================================================== */
+.blackjack-container {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    width: min(1100px, 100%);
+    margin: 1.5rem auto 0;
+}
 
-    /* Main layout container split into two columns */
+.blackjack-container .cards-display {
+    flex: 1 1 65%;
+    min-width: 0;
+}
+
+.blackjack-container .game-sidebar {
+    flex: 0 0 320px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.blackjack-container .game-information p {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.blackjack-container .game-information p:last-child {
+    border-bottom: none;
+}
+
+.blackjack-container .info-label {
+    color: #94a3b8;
+}
+
+.blackjack-container .game-information strong,
+.blackjack-container .game-sidebar strong {
+    color: #ffca28;
+}
+
+/* Player action buttons */
+.blackjack-container .game-sidebar .playerInput form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.blackjack-container .game-sidebar .playerInput input[type="submit"],
+.blackjack-container .game-sidebar .playerInput button {
+    width: auto;
+    min-width: 7.5em;
+    max-width: 10em;
+    align-self: auto;
+    cursor: pointer;
+    font-weight: 700;
+    border-radius: 24px;
+    padding: 0.65rem 1.25rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
+}
+
+.blackjack-container .game-sidebar .playerInput input[type="submit"]:hover,
+.blackjack-container .game-sidebar .playerInput button:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.blackjack-container .game-sidebar .playerInput input[type="submit"]:active,
+.blackjack-container .game-sidebar .playerInput button:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Prefer explicit classes in HTML: .btn-hit and .btn-stand */
+.blackjack-container .game-sidebar .playerInput .btn-hit,
+.blackjack-container .game-sidebar .playerInput [value*="hit" i] {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.blackjack-container .game-sidebar .playerInput .btn-hit:hover,
+.blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover {
+    background-color: #66bb6a;
+}
+
+.blackjack-container .game-sidebar .playerInput .btn-stand,
+.blackjack-container .game-sidebar .playerInput [value*="stay" i],
+.blackjack-container .game-sidebar .playerInput [value*="stand" i] {
+    background-color: #e53935;
+    color: #fff;
+}
+
+.blackjack-container .game-sidebar .playerInput .btn-stand:hover,
+.blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
+.blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover {
+    background-color: #ef5350;
+}
+
+/* ==========================================================================
+   Responsive Tweaks
+   ========================================================================== */
+@media (max-width: 900px) {
     .blackjack-container {
-        display: flex;
-        gap: 2.5rem;
-        /* Large space between cards and sidebar info */
-        align-items: flex-start;
-        margin-top: 1rem;
-    }
-
-    /* Left Column: Card areas take up the main chunk of space */
-    .cards-display {
-        flex: 3;
-    }
-
-    /* Right Column: Game metrics and hit/stay action buttons */
-    .game-sidebar {
-        flex: 1;
-        background: rgba(255, 255, 255, 0.05);
-        /* Matching your translucent nav bar */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 1.5rem;
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-        display: flex;
         flex-direction: column;
-        gap: 1.5rem;
-        /* Even spacing between stats and your buttons block */
-    }
-
-    /* Game info formatting to cleanly align your Labels and Amounts */
-    .game-information p {
-        display: flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        padding-bottom: 0.5rem;
-    }
-
-    .game-information p:last-child {
-        border-bottom: none;
-    }
-
-    .info-label {
-        color: #94a3b8;
-        /* Matching your existing label styles */
-    }
-
-    .game-information strong {
-        color: #ffca28;
-        /* Gold accent color used in your headers */
-    }
-
-    /* ==========================================================================
-   Blackjack Game Table Flexbox Layout System
-   ========================================================================== */
-    /* ==========================================================================
-   Blackjack Game Table Flexbox Layout System
-   ========================================================================== */
-
-    /* 1. Main layout container split into side-by-side columns */
-    .content .blackjack-container {
-        display: flex;
-        gap: 2.5rem;
-        align-items: flex-start;
         width: 100%;
-        margin-top: 1.5rem;
     }
 
-    /* 2. Left Column: Card display takes up 65% of the space */
-    .blackjack-container .cards-display {
-        flex: 1 1 65%;
-        min-width: 0;
-        /* Prevents overlapping card margins from blowing out layout width */
-    }
-
-    /* 3. Right Column: Sidebar takes up 35% of the space */
     .blackjack-container .game-sidebar {
-        flex: 1 1 35%;
-        min-width: 260px;
-        /* Locks a clean minimum width for your dashboard data */
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 1.5rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-
-    /* 4. THE FIX: Resets the sloppy global form layout rules for your buttons inside the sidebar */
-    .game-sidebar .playerInput form {
-        display: flex;
-        flex-direction: row;
-        /* Forces Hit and Stay buttons to sit side-by-side */
-        gap: 1rem;
-        /* Adds clean spacing between your action buttons */
+        flex: 1 1 auto;
         width: 100%;
-        margin: 0;
     }
 
-    /* Forces your submit buttons (Hit/Stay) inside the sidebar to scale normally */
-    .game-sidebar .playerInput input[type=submit] {
-        flex: 1;
-        /* Makes both buttons take up equal width inside the sidebar */
-        min-width: 0;
-        /* Overrides the restrictive 10em rule from your global file */
-        align-self: unset;
-        /* Overrides the default layout push */
-    }
-
-    /* 5. Aligns stats labels to the left and gold values to the right */
-    .game-sidebar .game-information p {
-        display: flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .game-sidebar .game-information p:last-child {
-        border-bottom: none;
-    }
-
-    .game-sidebar .info-label {
-        color: #94a3b8;
-    }
-
-    .game-sidebar strong {
-        color: #ffca28;
-    }
-
-
-    /* ==========================================================================
-   Self-Contained Blackjack Grid System (Safe Overlay)
-   ========================================================================== */
-    .blackjack-container .game-sidebar .playerInput form {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 1.25rem;
-        flex-wrap: wrap;
-    }
-
-    .blackjack-container .game-sidebar .playerInput form button,
-    .blackjack-container .game-sidebar .playerInput form input[type="submit"] {
-        width: auto;
-        min-width: 7.5em;
-        max-width: 10em;
-        cursor: pointer;
-        font-weight: 700;
-        border-radius: 24px;
-        padding: 0.65rem 1.25rem;
-        border: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, .2);
-        transition: transform .15s ease, background-color .2s ease, box-shadow .15s ease;
-    }
-
-    .blackjack-container .game-sidebar .playerInput .btn-hit {
-        background: #4caf50;
-        color: #fff;
-    }
-
-    .blackjack-container .game-sidebar .playerInput .btn-hit:hover {
-        background: #66bb6a;
-    }
-
-    .blackjack-container .game-sidebar .playerInput .btn-stand {
-        background: #e53935;
-        color: #fff;
-    }
-
-    .blackjack-container .game-sidebar .playerInput .btn-stand:hover {
-        background: #ef5350;
-    }
-
-    /* ==========================================================================
-   Blackjack Button Styling & Micro-Interactions (Clean Specificity)
-   ========================================================================== */
-
-    /* 1. Universal layout and transition rules for any type of button inside your sidebar */
-    .blackjack-container .game-sidebar .playerInput input[type=submit],
-    .blackjack-container .game-sidebar .playerInput button {
-        display: block;
+    .hero-text-overlay {
         width: 100%;
-        min-width: 0;
-        align-self: unset;
-        cursor: pointer;
-        font-weight: bold;
-        border-radius: 24px;
-        padding: 0.75rem 1.5rem;
-        border: none;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-        transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
-    }
-
-    /* 2. Tactile interaction: Lift button slightly on hover */
-    .blackjack-container .game-sidebar .playerInput input[type=submit]:hover,
-    .blackjack-container .game-sidebar .playerInput button:hover {
-        transform: translateY(-2px) scale(1.03);
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-    }
-
-    /* 3. Click interaction: Press button down slightly when clicked */
-    .blackjack-container .game-sidebar .playerInput input[type=submit]:active,
-    .blackjack-container .game-sidebar .playerInput button:active {
-        transform: translateY(1px) scale(0.98);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-
-    /* 4. "Hit" Button: Targeted explicitly through container pathing to defeat global rules */
-    .blackjack-container .game-sidebar .playerInput [value*="hit" i],
-    .blackjack-container .game-sidebar .playerInput [value*="Hit" i],
-    .blackjack-container .game-sidebar .playerInput button:first-of-type {
-        background-color: #4caf50;
-        color: #ffffff;
-    }
-
-    .blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover,
-    .blackjack-container .game-sidebar .playerInput [value*="Hit" i]:hover,
-    .blackjack-container .game-sidebar .playerInput button:first-of-type:hover {
-        background-color: #66bb6a;
-    }
-
-    /* 5. "Stay/Stand" Button: Targeted explicitly through container pathing to defeat global rules */
-    .blackjack-container .game-sidebar .playerInput [value*="stay" i],
-    .blackjack-container .game-sidebar .playerInput [value*="stand" i],
-    .blackjack-container .game-sidebar .playerInput button:last-of-type {
-        background-color: #e53935;
-        color: #ffffff;
-    }
-
-    .blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
-    .blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover,
-    .blackjack-container .game-sidebar .playerInput button:last-of-type:hover {
-        background-color: #ef5350;
+        background: linear-gradient(to top, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.2));
     }
 }
