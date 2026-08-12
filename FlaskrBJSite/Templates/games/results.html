@@ -2,6 +2,9 @@
 {% extends 'games/game.html' %}
 
 {% block playerInput %}
+    <h3>{{didPlayerWin}}</h3>
+
+
     <form method="post">
     {% if session.get("GameNumber") < 10 and session.get("Balance") > 0  %}
          <a class="action" href="{{ url_for('games.betting')}}">New Hand</a>

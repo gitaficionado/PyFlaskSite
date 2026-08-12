@@ -24,7 +24,7 @@
 </ul>
 <h2>Balance - {{session.get("Balance")}}</h2>
 <h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
-<h2>Game number - {{session.get("GameNumber")}}</h2>
+<h2>Game number - {{1+session.get("GameNumber")}}</h2>
 <section class="playerInput">
   {% block playerInput %}{% endblock %}
 </section>
