@@ -316,6 +316,203 @@ div.content ul.card-row li img.card {
     background: none;
 }
 
+/* ==========================================================================
+   Material Welcome Screen & Hero Banner System
+   ========================================================================== */
+
+/* Layout Framework */
+.welcome-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+
+/* 1. The main box sets the boundary grid */
+.hero-banner {
+    position: relative;
+    /* Crucial: Locks the coordinate map for children */
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* 2. The graphic rules */
+.hero-art {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1000 / 370;
+    /* Fits the card graphic proportions perfectly */
+    object-fit: cover;
+    display: block;
+}
+
+/* 3. The Absolute Position Layer placing text over the image */
+.hero-text-overlay {
+    position: absolute;
+    /* Keeps text layered directly over the image */
+    bottom: 0;
+    /* Aligns text container to the bottom boundary */
+    right: 0;
+    /* CHANGED: Pulls the text overlay to the right edge */
+    width: 50%;
+    /* CHANGED: Restricts the text to the right half of the banner */
+    height: 100%;
+    /* NEW: Stretches the overlay from top to bottom */
+
+    /* Center your text vertically inside the right half of the banner */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 2rem;
+    box-sizing: border-box;
+
+
+    background: linear-gradient(to left, rgba(18, 18, 18, 0.95) 0%, rgba(18, 18, 18, 0.6) 70%, rgba(18, 18, 18, 0) 100%);
+}
+
+
+/* 4. Text adjustments */
+.hero-text-overlay h1 {
+    font-family: system-ui, sans-serif;
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #ffca28;
+    /* Casino gold matching your theme */
+    margin: 0 0 0.25rem 0;
+}
+
+.md-body-large {
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    /* Crisp off-white text for ultimate contrast */
+    margin: 0;
+}
+
+/* 2. Material Design Grid Structure */
+.md-grid-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.5rem;
+}
+
+.column-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* 3. Surface Card Containers */
+.md-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 1.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.md-card h2 {
+    font-family: system-ui, sans-serif;
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+}
+
+/* 4. Action Target Row Styles */
+.primary-action-card {
+    background: rgba(255, 202, 40, 0.05);
+    border-color: rgba(255, 202, 40, 0.2);
+}
+
+.action-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.text-center {
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.button-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+/* 5. Typography/Lists Cleanup */
+.md-list {
+    padding-left: 1.25rem;
+    margin: 0;
+}
+
+.md-list li {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+}
+
+.md-list li:last-child {
+    margin-bottom: 0;
+}
+
+.helper-text {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0;
+}
+
+/* 6. Pure Button Classes */
+.md-btn-filled,
+.md-btn-primary {
+    background: #ffca28;
+    color: #121212 !important;
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none !important;
+    display: inline-block;
+    transition: transform 0.1s ease, background 0.2s;
+}
+
+.md-btn-filled:hover,
+.md-btn-primary:hover {
+    background: #ffe082;
+}
+
+.md-btn-outline {
+    background: transparent;
+    color: #ffca28 !important;
+    border: 2px solid rgba(255, 202, 40, 0.4);
+    font-weight: 700;
+    padding: 0.65rem 2rem;
+    border-radius: 100px;
+    text-decoration: none !important;
+    display: inline-block;
+    transition: border 0.2s, background 0.2s;
+}
+
+.md-btn-outline:hover {
+    border-color: #ffca28;
+    background: rgba(255, 202, 40, 0.05);
+}
+
+.disclaimer-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #64748b;
 /*Hide the arrows in the betting number bos*/
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
