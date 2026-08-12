@@ -704,85 +704,68 @@ div.content ul.card-row li img.card {
 /* ==========================================================================
    Blackjack Button Form Container Alignment Rules
    ========================================================================== */
+.blackjack-container {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 1.5rem;
+}
 
-/* 1. Forces whatever structural wrappers are inside your playerInput block to center their contents */
-.blackjack-container .game-sidebar .playerInput,
-.blackjack-container .game-sidebar .playerInput>div,
+.blackjack-container .cards-display {
+    flex: 1 1 65%;
+    min-width: 0;
+}
+
+.blackjack-container .game-sidebar {
+    flex: 1 1 35%;
+    min-width: 260px;
+    background: rgba(255, 255, 255, .05);
+    border: 1px solid rgba(255, 255, 255, .1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .4);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
 .blackjack-container .game-sidebar .playerInput form {
     display: flex;
-    flex-direction: row;
-    /* Places buttons horizontally side-by-side */
     justify-content: center;
-    /* CHANGE TO 'flex-start' IF YOU WANT THEM ALIGNED LEFT */
+    /* or flex-start */
     align-items: center;
-    gap: 1.25rem;
-    /* Generates a clean gap between the buttons */
-    width: 100%;
-    max-width: 100%;
+    gap: 1rem;
+    flex-wrap: wrap;
     margin: 0;
-    padding: 0;
 }
 
-/* 2. Forces your specific buttons to shrink to a uniform size instead of stretching full-width */
-.blackjack-container .game-sidebar .playerInput input[type=submit],
+.blackjack-container .game-sidebar .playerInput input[type="submit"],
 .blackjack-container .game-sidebar .playerInput button {
-    display: inline-block;
     width: auto;
-    /* Lets buttons sizing compress down naturally */
     min-width: 7.5em;
-    /* Restricts buttons to a uniform, clean minimum width */
     max-width: 10em;
-    /* Restricts buttons from swelling too massive */
-    align-self: unset;
-    /* Breaks the vertical stretch layout defaults */
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 24px;
-    padding: 0.65rem 1.25rem;
-    /* Clean layout spacing boundaries */
+    padding: .65rem 1.25rem;
     border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
+    border-radius: 24px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
-/* 3. Lift button slightly on hover */
-.blackjack-container .game-sidebar .playerInput input[type=submit]:hover,
-.blackjack-container .game-sidebar .playerInput button:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+.blackjack-container .game-sidebar .playerInput .btn-hit {
+    background: #4caf50;
+    color: #fff;
 }
 
-/* 4. Press button down slightly when clicked */
-.blackjack-container .game-sidebar .playerInput input[type=submit]:active,
-.blackjack-container .game-sidebar .playerInput button:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+.blackjack-container .game-sidebar .playerInput .btn-hit:hover {
+    background: #66bb6a;
 }
 
-/* 5. "Hit" Button: Rich Casino Green color mapping */
-.blackjack-container .game-sidebar .playerInput [value*="hit" i],
-.blackjack-container .game-sidebar .playerInput [value*="Hit" i],
-.blackjack-container .game-sidebar .playerInput button:first-of-type {
-    background-color: #4caf50;
-    color: #ffffff;
+.blackjack-container .game-sidebar .playerInput .btn-stand {
+    background: #e53935;
+    color: #fff;
 }
 
-.blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover,
-.blackjack-container .game-sidebar .playerInput [value*="Hit" i]:hover,
-.blackjack-container .game-sidebar .playerInput button:first-of-type:hover {
-    background-color: #66bb6a;
-}
-
-/* 6. "Stay/Stand" Button: Velvet Crimson Red color mapping */
-.blackjack-container .game-sidebar .playerInput [value*="stay" i],
-.blackjack-container .game-sidebar .playerInput [value*="stand" i],
-.blackjack-container .game-sidebar .playerInput button:last-of-type {
-    background-color: #e53935;
-    color: #ffffff;
-}
-
-.blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
-.blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover,
-.blackjack-container .game-sidebar .playerInput button:last-of-type:hover {
-    background-color: #ef5350;
+.blackjack-container .game-sidebar .playerInput .btn-stand:hover {
+    background: #ef5350;
 }
