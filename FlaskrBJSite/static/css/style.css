@@ -582,69 +582,76 @@ div.content ul.card-row li img.card {
     }
 
     /* ==========================================================================
-   Blackjack Split Table Layout Fix (Using card-image)
+   Blackjack Game Table Flexbox Layout
    ========================================================================== */
 
-    /* Split layout wrapper constraint */
+    /* Main layout container split into two fluid side-by-side columns */
     .blackjack-container {
         display: flex;
-        gap: 2rem;
+        gap: 2.5rem;
+        /* Large space between cards and sidebar info */
         align-items: flex-start;
         margin-top: 1rem;
         width: 100%;
     }
 
-    /* Force left card area to constrain its contents and allow sharing space */
-    .cards-display {
-        flex: 2;
+    /* Left Column: Gives the card sections room to sit and expand safely */
+    .blackjack-container .cards-display {
+        flex: 1 1 65%;
+        /* Takes up 65% of layout space, allows natural resizing */
         min-width: 0;
-        /* Prevents flex items from breaking the column grid */
+        /* Crucial: Prevents overlapping card margins from blowing out the grid width */
     }
 
-    /* Force right sidebar area to snap to a clean layout width */
-    .game-sidebar {
-        flex: 1;
-        min-width: 250px;
-        /* Keeps text inside from wrapping too tightly */
+    /* Right Column: Converts your sidebar section into an elegant dashboard widget box */
+    .blackjack-container .game-sidebar {
+        flex: 1 1 35%;
+        /* Takes up 35% of the total row width */
+        min-width: 260px;
+        /* Locks layout boundaries so inner stats won't text-wrap messily */
         background: rgba(255, 255, 255, 0.05);
+        /* Translucent casino dashboard background */
         border: 1px solid rgba(255, 255, 255, 0.1);
-        padding: 1.25rem;
         border-radius: 12px;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        padding: 1.5rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         display: flex;
         flex-direction: column;
         gap: 1.5rem;
+        /* Even spacing between game stats and your hit/stay buttons */
     }
 
-    /* Force your specific card-image elements to size down exactly right */
-    .cards-row img.card-image {
+    /* Forces card images to lock onto your standard card size inside this specific wrapper layout */
+    .blackjack-container .cards-row img.card-image {
         display: block;
-        width: 85px !important;
-        height: 120px !important;
+        width: 85px;
+        height: 120px;
         object-fit: contain;
         border-radius: 6px;
         box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
         background: none;
     }
 
-    /* Card metrics positioning format */
-    .game-information p {
+    /* Aligns text labels to the left edge, and bold gold stat numbers to the right edge */
+    .game-sidebar .game-information p {
         display: flex;
         justify-content: space-between;
         margin: 0.5rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    .game-information p:last-child {
+    .game-sidebar .game-information p:last-child {
         border-bottom: none;
     }
 
-    .info-label {
+    .game-sidebar .info-label {
         color: #94a3b8;
+        /* Silver text tint for metadata labels */
     }
 
-    .game-information strong {
+    .game-sidebar strong {
         color: #ffca28;
+        /* High-end gold text accent typical of card tables */
     }
 }
