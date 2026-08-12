@@ -66,6 +66,24 @@
     {% block playerInput %}{% endblock %}
   </section>
 
+<h2>Dealer cards</h2>
+<ul class="cards-row">
+  {% for card in dealerCards %}
+  <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
+  {% endfor %}
+</ul>
+<h2>Your cards</h2>
+<ul class="cards-row">
+  {% for card in playerCards %}
+  <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
+  {% endfor %}
+</ul>
+
+<h2>Balance - {{session.get("Balance")}}</h2>
+<h2>Amount Bet - {{session.get("BettingAmount")}}</h2>
+<h2>Game number - {{1+session.get("GameNumber")}}</h2>
+<section class="playerInput">
+  {% block playerInput %}{% endblock %}
 </section>
 
 {% endblock %}
