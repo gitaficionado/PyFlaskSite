@@ -716,47 +716,63 @@ div.content ul.card-row li img.card {
 }
 
 /* ==========================================================================
-   Blackjack Button Styling & Micro-Interactions
+   Blackjack Button Styling & Micro-Interactions (Clean Specificity)
    ========================================================================== */
 
-/* 1. Base button modifications for smooth movement transitions */
-.game-sidebar .playerInput input[type=submit] {
-    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.15s ease;
+/* 1. Universal layout and transition rules for any type of button inside your sidebar */
+.blackjack-container .game-sidebar .playerInput input[type=submit],
+.blackjack-container .game-sidebar .playerInput button {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    align-self: unset;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 24px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
 }
 
-/* 2. Micro-interaction: Scale button up slightly on hover and boost elevation shadow */
-.game-sidebar .playerInput input[type=submit]:hover {
+/* 2. Tactile interaction: Lift button slightly on hover */
+.blackjack-container .game-sidebar .playerInput input[type=submit]:hover,
+.blackjack-container .game-sidebar .playerInput button:hover {
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
-/* 3. Micro-interaction: Compress downward slightly when clicked */
-.game-sidebar .playerInput input[type=submit]:active {
+/* 3. Click interaction: Press button down slightly when clicked */
+.blackjack-container .game-sidebar .playerInput input[type=submit]:active,
+.blackjack-container .game-sidebar .playerInput button:active {
     transform: translateY(1px) scale(0.98);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* 4. "Hit" Button Style Identity: Rich Casino Green */
-.game-sidebar .playerInput input[type=submit][value="Hit"] {
+/* 4. "Hit" Button: Targeted explicitly through container pathing to defeat global rules */
+.blackjack-container .game-sidebar .playerInput [value*="hit" i],
+.blackjack-container .game-sidebar .playerInput [value*="Hit" i],
+.blackjack-container .game-sidebar .playerInput button:first-of-type {
     background-color: #4caf50;
     color: #ffffff;
 }
 
-.game-sidebar .playerInput input[type=submit][value="Hit"]:hover {
+.blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover,
+.blackjack-container .game-sidebar .playerInput [value*="Hit" i]:hover,
+.blackjack-container .game-sidebar .playerInput button:first-of-type:hover {
     background-color: #66bb6a;
-    /* Brightens up beautifully on hover */
 }
 
-/* 5. "Stay" Button Style Identity: Velvet Crimson Red */
-/* Note: If your button text says "Stand", change [value="Stay"] to [value="Stand"] below */
-.game-sidebar .playerInput input[type=submit][value="Stay"],
-.game-sidebar .playerInput input[type=submit][value="Stand"] {
+/* 5. "Stay/Stand" Button: Targeted explicitly through container pathing to defeat global rules */
+.blackjack-container .game-sidebar .playerInput [value*="stay" i],
+.blackjack-container .game-sidebar .playerInput [value*="stand" i],
+.blackjack-container .game-sidebar .playerInput button:last-of-type {
     background-color: #e53935;
     color: #ffffff;
 }
 
-.game-sidebar .playerInput input[type=submit][value="Stay"]:hover,
-.game-sidebar .playerInput input[type=submit][value="Stand"]:hover {
+.blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
+.blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover,
+.blackjack-container .game-sidebar .playerInput button:last-of-type:hover {
     background-color: #ef5350;
-    /* Brightens up beautifully on hover */
 }
