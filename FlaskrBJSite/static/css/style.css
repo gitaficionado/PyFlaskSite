@@ -524,3 +524,59 @@ div.content ul.card-row li img.card {
     input[type="number"] {
         appearance: textfield;
     }
+
+    /* ==========================================================================
+   Blackjack Split Table Layout (Side-by-Side)
+   ========================================================================== */
+
+    /* Main layout container split into two columns */
+    .blackjack-container {
+        display: flex;
+        gap: 2.5rem;
+        /* Large space between cards and sidebar info */
+        align-items: flex-start;
+        margin-top: 1rem;
+    }
+
+    /* Left Column: Card areas take up the main chunk of space */
+    .cards-display {
+        flex: 3;
+    }
+
+    /* Right Column: Game metrics and hit/stay action buttons */
+    .game-sidebar {
+        flex: 1;
+        background: rgba(255, 255, 255, 0.05);
+        /* Matching your translucent nav bar */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        /* Even spacing between stats and your buttons block */
+    }
+
+    /* Game info formatting to cleanly align your Labels and Amounts */
+    .game-information p {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.5rem;
+    }
+
+    .game-information p:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        color: #94a3b8;
+        /* Matching your existing label styles */
+    }
+
+    .game-information strong {
+        color: #ffca28;
+        /* Gold accent color used in your headers */
+    }

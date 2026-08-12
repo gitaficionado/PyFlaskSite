@@ -5,67 +5,58 @@
 {% endblock %}
 
 {% block content %}
+<section class="blackjack-container">
 
+  <!-- Left Side: Cards Area -->
+  <div class="cards-display">
 
-<!--- have a place for what images to show for the house and for the player--->
-<!--- this will also be extended, this should only need to handle the displaying of the cards --->
+    <!-- Dealer Section -->
+    <section class="dealer-area">
+      <h2>Dealer cards</h2>
+      <ul class="cards-row">
+        {% for card in dealerCards %}
+        <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
+        {% endfor %}
+      </ul>
+    </section>
 
-<section class="blackjack-table">
+    <!-- Player Section -->
+    <section class="player-area">
+      <h2>Your cards</h2>
+      <ul class="cards-row">
+        {% for card in playerCards %}
+        <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
+        {% endfor %}
+      </ul>
+    </section>
 
-  <!--- show the dealer cards at the top of the table --->
-  <section class="dealer-area">
+  </div>
 
-    <h2>Dealer cards</h2>
+  <!-- Right Side: Sidebar Info & Controls -->
+  <aside class="game-sidebar">
 
-    <ul class="cards-row">
-      {% for card in dealerCards %}
-      <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
-      {% endfor %}
-    </ul>
+    <!-- Stats -->
+    <section class="game-information">
+      <p>
+        <span class="info-label">Balance</span>
+        <strong>${{session.get("Balance")}}</strong>
+      </p>
+      <p>
+        <span class="info-label">Amount Bet</span>
+        <strong>${{session.get("BettingAmount")}}</strong>
+      </p>
+      <p>
+        <span class="info-label">Hands Completed</span>
+        <strong>{{session.get("GameNumber")}} of 10</strong>
+      </p>
+    </section>
 
-  </section>
+    <!-- Hit/Stay Buttons from extended page -->
+    <section class="playerInput">
+      {% block playerInput %}{% endblock %}
+    </section>
 
-
-  <!--- show the player cards closer to the player --->
-  <section class="player-area">
-
-    <h2>Your cards</h2>
-
-    <ul class="cards-row">
-      {% for card in playerCards %}
-      <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
-      {% endfor %}
-    </ul>
-
-  </section>
-
-
-  <!--- show the current information for the game --->
-  <section class="game-information">
-
-    <p>
-      <span class="info-label">Balance</span>
-      <strong>${{session.get("Balance")}}</strong>
-    </p>
-
-    <p>
-      <span class="info-label">Amount Bet</span>
-      <strong>${{session.get("BettingAmount")}}</strong>
-    </p>
-
-    <p>
-      <span class="info-label">Hands Completed</span>
-      <strong>{{session.get("GameNumber")}} of 10</strong>
-    </p>
-
-  </section>
-
-
-  <!--- show the buttons or results from the extended page --->
-  <section class="playerInput">
-    {% block playerInput %}{% endblock %}
-  </section>
+  </aside>
 
 </section>
-
 {% endblock %}
