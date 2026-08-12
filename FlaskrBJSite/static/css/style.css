@@ -588,8 +588,8 @@ div.content ul.card-row li img.card {
     /* Main layout container split into two fluid side-by-side columns */
     .blackjack-container {
         display: flex;
-        gap: 2.5rem;
-        /* Large space between cards and sidebar info */
+        gap: 2rem;
+        /* Reduced space to save horizontal room */
         align-items: flex-start;
         margin-top: 1rem;
         width: 100%;
@@ -597,23 +597,23 @@ div.content ul.card-row li img.card {
 
     /* Left Column: Gives the card sections room to sit and expand safely */
     .blackjack-container .cards-display {
-        flex: 1 1 65%;
-        /* Takes up 65% of layout space, allows natural resizing */
+        flex: 1 1 70%;
+        /* Takes up 70% of layout space */
         min-width: 0;
         /* Crucial: Prevents overlapping card margins from blowing out the grid width */
     }
 
     /* Right Column: Converts your sidebar section into an elegant dashboard widget box */
     .blackjack-container .game-sidebar {
-        flex: 1 1 35%;
-        /* Takes up 35% of the total row width */
-        min-width: 260px;
-        /* Locks layout boundaries so inner stats won't text-wrap messily */
+        flex: 1 1 30%;
+        /* Takes up 30% of the total row width */
+        min-width: 220px;
+        /* Lowered minimum width so it fits tighter layout bounds */
         background: rgba(255, 255, 255, 0.05);
         /* Translucent casino dashboard background */
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
-        padding: 1.5rem;
+        padding: 1.25rem;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
         display: flex;
         flex-direction: column;
