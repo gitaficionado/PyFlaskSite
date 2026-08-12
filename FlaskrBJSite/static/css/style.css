@@ -580,4 +580,71 @@ div.content ul.card-row li img.card {
         color: #ffca28;
         /* Gold accent color used in your headers */
     }
+
+    /* ==========================================================================
+   Blackjack Split Table Layout Fix (Using card-image)
+   ========================================================================== */
+
+    /* Split layout wrapper constraint */
+    .blackjack-container {
+        display: flex;
+        gap: 2rem;
+        align-items: flex-start;
+        margin-top: 1rem;
+        width: 100%;
+    }
+
+    /* Force left card area to constrain its contents and allow sharing space */
+    .cards-display {
+        flex: 2;
+        min-width: 0;
+        /* Prevents flex items from breaking the column grid */
+    }
+
+    /* Force right sidebar area to snap to a clean layout width */
+    .game-sidebar {
+        flex: 1;
+        min-width: 250px;
+        /* Keeps text inside from wrapping too tightly */
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 1.25rem;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    /* Force your specific card-image elements to size down exactly right */
+    .cards-row img.card-image {
+        display: block;
+        width: 85px !important;
+        height: 120px !important;
+        object-fit: contain;
+        border-radius: 6px;
+        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
+        background: none;
+    }
+
+    /* Card metrics positioning format */
+    .game-information p {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.5rem;
+    }
+
+    .game-information p:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        color: #94a3b8;
+    }
+
+    .game-information strong {
+        color: #ffca28;
+    }
 }
