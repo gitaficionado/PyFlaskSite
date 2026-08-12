@@ -714,3 +714,49 @@ div.content ul.card-row li img.card {
     color: #ffca28;
     /* Gold headline color accent */
 }
+
+/* ==========================================================================
+   Blackjack Button Styling & Micro-Interactions
+   ========================================================================== */
+
+/* 1. Base button modifications for smooth movement transitions */
+.game-sidebar .playerInput input[type=submit] {
+    transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s ease, box-shadow 0.15s ease;
+}
+
+/* 2. Micro-interaction: Scale button up slightly on hover and boost elevation shadow */
+.game-sidebar .playerInput input[type=submit]:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* 3. Micro-interaction: Compress downward slightly when clicked */
+.game-sidebar .playerInput input[type=submit]:active {
+    transform: translateY(1px) scale(0.98);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* 4. "Hit" Button Style Identity: Rich Casino Green */
+.game-sidebar .playerInput input[type=submit][value="Hit"] {
+    background-color: #4caf50;
+    color: #ffffff;
+}
+
+.game-sidebar .playerInput input[type=submit][value="Hit"]:hover {
+    background-color: #66bb6a;
+    /* Brightens up beautifully on hover */
+}
+
+/* 5. "Stay" Button Style Identity: Velvet Crimson Red */
+/* Note: If your button text says "Stand", change [value="Stay"] to [value="Stand"] below */
+.game-sidebar .playerInput input[type=submit][value="Stay"],
+.game-sidebar .playerInput input[type=submit][value="Stand"] {
+    background-color: #e53935;
+    color: #ffffff;
+}
+
+.game-sidebar .playerInput input[type=submit][value="Stay"]:hover,
+.game-sidebar .playerInput input[type=submit][value="Stand"]:hover {
+    background-color: #ef5350;
+    /* Brightens up beautifully on hover */
+}
