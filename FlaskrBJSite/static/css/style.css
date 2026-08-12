@@ -546,3 +546,31 @@ input[type="number"] {
         background: linear-gradient(to top, rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.2));
     }
 }
+
+/* ===============================================================================
+Leaderboard table stuff
+==================================================================================== */
+.lbTable, .lbHeader, .lbItem{
+
+}
+.lbHeader, .lbItem{
+    padding-left: 10px;
+    padding-right: 10px;
+        border: 1px solid;
+}
+
+.lbItem{
+    text-align: right;
+}
+
+.lbTable{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#lbReturn{
+        display: flex;
+    justify-content: center;
+    align-items: center;
+}

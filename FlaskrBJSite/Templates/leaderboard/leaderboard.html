@@ -2,27 +2,27 @@
 
 {% block content %}
 
-<table>
+<table class="lbTable">
     <tr>
-        <th>User Name</th>
-        <th>Chip Balance</th>
-        <th>Wins</th>
-        <th>Losses</th>
-        <th>Ties</th>
+        <th class="lbHeader">User Name</th>
+        <th class="lbHeader">Chip Balance</th>
+        <th class="lbHeader">Wins</th>
+        <th class="lbHeader">Losses</th>
+        <th class="lbHeader">Ties</th>
     </tr>
 {% for p in board %}
     <tr>
-        <td>{{p['username']}}</td>
-        <td>{{p['score']}}</td>
-        <td>{{p['wins']}}</td>
-        <td>{{p['losses']}}</td>
-        <td>{{p['ties']}}</td>
+        <td class="lbItem">{{p['username']}}</td>
+        <td class="lbItem">{{p['score']}}</td>
+        <td class="lbItem">{{p['wins']}}</td>
+        <td class="lbItem">{{p['losses']}}</td>
+        <td class="lbItem">{{p['ties']}}</td>
     </tr>
 {% endfor %}
 
 </table>
 
-          <a href="{{ url_for('welcome') }}" class="button">
+          <a href="{{ url_for('welcome') }}" class="button" id="lbReturn">
             Welcome Page
         </a>
 
