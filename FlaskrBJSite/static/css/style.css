@@ -584,6 +584,9 @@ div.content ul.card-row li img.card {
     /* ==========================================================================
    Blackjack Game Table Flexbox Layout System
    ========================================================================== */
+    /* ==========================================================================
+   Blackjack Game Table Flexbox Layout System
+   ========================================================================== */
 
     /* 1. Main layout container split into side-by-side columns */
     .content .blackjack-container {
@@ -617,22 +620,24 @@ div.content ul.card-row li img.card {
     }
 
     /* 4. THE FIX: Resets the sloppy global form layout rules for your buttons inside the sidebar */
-
-
-    /* Aligns buttons flush to the left edge */
     .game-sidebar .playerInput form {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
-        /* Pushes content left alignment */
+        /* Forces Hit and Stay buttons to sit side-by-side */
         gap: 1rem;
+        /* Adds clean spacing between your action buttons */
+        width: 100%;
         margin: 0;
     }
 
+    /* Forces your submit buttons (Hit/Stay) inside the sidebar to scale normally */
     .game-sidebar .playerInput input[type=submit] {
-        min-width: 8em;
-        /* Clean width target */
+        flex: 1;
+        /* Makes both buttons take up equal width inside the sidebar */
+        min-width: 0;
+        /* Overrides the restrictive 10em rule from your global file */
         align-self: unset;
+        /* Overrides the default layout push */
     }
 
     /* 5. Aligns stats labels to the left and gold values to the right */
@@ -655,112 +660,109 @@ div.content ul.card-row li img.card {
     .game-sidebar strong {
         color: #ffca28;
     }
-}
 
-/* ==========================================================================
+
+    /* ==========================================================================
    Self-Contained Blackjack Grid System (Safe Overlay)
    ========================================================================== */
-.blackjack-container .game-sidebar .playerInput form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.25rem;
-    flex-wrap: wrap;
-}
+    .blackjack-container .game-sidebar .playerInput form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+    }
 
-.blackjack-container .game-sidebar .playerInput form button,
-.blackjack-container .game-sidebar .playerInput form input[type="submit"] {
-    width: auto;
-    min-width: 7.5em;
-    max-width: 10em;
-    cursor: pointer;
-    font-weight: 700;
-    border-radius: 24px;
-    padding: 0.65rem 1.25rem;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, .2);
-    transition: transform .15s ease, background-color .2s ease, box-shadow .15s ease;
-}
+    .blackjack-container .game-sidebar .playerInput form button,
+    .blackjack-container .game-sidebar .playerInput form input[type="submit"] {
+        width: auto;
+        min-width: 7.5em;
+        max-width: 10em;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 24px;
+        padding: 0.65rem 1.25rem;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, .2);
+        transition: transform .15s ease, background-color .2s ease, box-shadow .15s ease;
+    }
 
-.blackjack-container .game-sidebar .playerInput .btn-hit {
-    background: #4caf50;
-    color: #fff;
-}
+    .blackjack-container .game-sidebar .playerInput .btn-hit {
+        background: #4caf50;
+        color: #fff;
+    }
 
-.blackjack-container .game-sidebar .playerInput .btn-hit:hover {
-    background: #66bb6a;
-}
+    .blackjack-container .game-sidebar .playerInput .btn-hit:hover {
+        background: #66bb6a;
+    }
 
-.blackjack-container .game-sidebar .playerInput .btn-stand {
-    background: #e53935;
-    color: #fff;
-}
+    .blackjack-container .game-sidebar .playerInput .btn-stand {
+        background: #e53935;
+        color: #fff;
+    }
 
-.blackjack-container .game-sidebar .playerInput .btn-stand:hover {
-    background: #ef5350;
-}
+    .blackjack-container .game-sidebar .playerInput .btn-stand:hover {
+        background: #ef5350;
+    }
 
-/* ==========================================================================
-   Blackjack Button Styling & Micro-Interactions
-   ========================================================================== */
-/* ==========================================================================
+    /* ==========================================================================
    Blackjack Button Styling & Micro-Interactions (Clean Specificity)
    ========================================================================== */
 
-/* 1. Universal layout and transition rules for any type of button inside your sidebar */
-.blackjack-container .game-sidebar .playerInput input[type=submit],
-.blackjack-container .game-sidebar .playerInput button {
-    display: block;
-    width: 100%;
-    min-width: 0;
-    align-self: unset;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 24px;
-    padding: 0.75rem 1.5rem;
-    border: none;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
-}
+    /* 1. Universal layout and transition rules for any type of button inside your sidebar */
+    .blackjack-container .game-sidebar .playerInput input[type=submit],
+    .blackjack-container .game-sidebar .playerInput button {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        align-self: unset;
+        cursor: pointer;
+        font-weight: bold;
+        border-radius: 24px;
+        padding: 0.75rem 1.5rem;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        transition: transform 0.15s ease, background-color 0.2s ease, box-shadow 0.15s ease;
+    }
 
-/* 2. Tactile interaction: Lift button slightly on hover */
-.blackjack-container .game-sidebar .playerInput input[type=submit]:hover,
-.blackjack-container .game-sidebar .playerInput button:hover {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-}
+    /* 2. Tactile interaction: Lift button slightly on hover */
+    .blackjack-container .game-sidebar .playerInput input[type=submit]:hover,
+    .blackjack-container .game-sidebar .playerInput button:hover {
+        transform: translateY(-2px) scale(1.03);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+    }
 
-/* 3. Click interaction: Press button down slightly when clicked */
-.blackjack-container .game-sidebar .playerInput input[type=submit]:active,
-.blackjack-container .game-sidebar .playerInput button:active {
-    transform: translateY(1px) scale(0.98);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
+    /* 3. Click interaction: Press button down slightly when clicked */
+    .blackjack-container .game-sidebar .playerInput input[type=submit]:active,
+    .blackjack-container .game-sidebar .playerInput button:active {
+        transform: translateY(1px) scale(0.98);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
 
-/* 4. "Hit" Button: Targeted explicitly through container pathing to defeat global rules */
-.blackjack-container .game-sidebar .playerInput [value*="hit" i],
-.blackjack-container .game-sidebar .playerInput [value*="Hit" i],
-.blackjack-container .game-sidebar .playerInput button:first-of-type {
-    background-color: #4caf50;
-    color: #ffffff;
-}
+    /* 4. "Hit" Button: Targeted explicitly through container pathing to defeat global rules */
+    .blackjack-container .game-sidebar .playerInput [value*="hit" i],
+    .blackjack-container .game-sidebar .playerInput [value*="Hit" i],
+    .blackjack-container .game-sidebar .playerInput button:first-of-type {
+        background-color: #4caf50;
+        color: #ffffff;
+    }
 
-.blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover,
-.blackjack-container .game-sidebar .playerInput [value*="Hit" i]:hover,
-.blackjack-container .game-sidebar .playerInput button:first-of-type:hover {
-    background-color: #66bb6a;
-}
+    .blackjack-container .game-sidebar .playerInput [value*="hit" i]:hover,
+    .blackjack-container .game-sidebar .playerInput [value*="Hit" i]:hover,
+    .blackjack-container .game-sidebar .playerInput button:first-of-type:hover {
+        background-color: #66bb6a;
+    }
 
-/* 5. "Stay/Stand" Button: Targeted explicitly through container pathing to defeat global rules */
-.blackjack-container .game-sidebar .playerInput [value*="stay" i],
-.blackjack-container .game-sidebar .playerInput [value*="stand" i],
-.blackjack-container .game-sidebar .playerInput button:last-of-type {
-    background-color: #e53935;
-    color: #ffffff;
-}
+    /* 5. "Stay/Stand" Button: Targeted explicitly through container pathing to defeat global rules */
+    .blackjack-container .game-sidebar .playerInput [value*="stay" i],
+    .blackjack-container .game-sidebar .playerInput [value*="stand" i],
+    .blackjack-container .game-sidebar .playerInput button:last-of-type {
+        background-color: #e53935;
+        color: #ffffff;
+    }
 
-.blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
-.blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover,
-.blackjack-container .game-sidebar .playerInput button:last-of-type:hover {
-    background-color: #ef5350;
-}
+    .blackjack-container .game-sidebar .playerInput [value*="stay" i]:hover,
+    .blackjack-container .game-sidebar .playerInput [value*="stand" i]:hover,
+    .blackjack-container .game-sidebar .playerInput button:last-of-type:hover {
+        background-color: #ef5350;
+    }
