@@ -1,36 +1,92 @@
 {% extends "base.html" %}
 
 {% block header %}
-<!-- Simplified header to let the Material layout take focus -->
+<h1>{% block title %}Welcome to Blackjack{% endblock %}</h1>
 {% endblock %}
 
 {% block content %}
+
 <div class="welcome-container">
 
-    <!-- 1. MATERIAL HERO BANNER AREA -->
-    <header class="hero-banner">
-        <!-- The physical image layer -->
-        <img src="{{ url_for('static', filename='images/table/splash_screen.png') }}" alt="Blackjack Table Art"
-            class="hero-art">
+    <section class="welcome-introduction">
+        <h2>Blackjack</h2>
 
-        <!-- The text layer that gets layered directly on top -->
-        <div class="hero-text-overlay">
-            <h1>Welcome to Blackjack</h1>
-            <p class="md-body-large">Try to beat the dealer by getting as close to 21 as possible without going over.
-            </p>
-        </div>
-    </header>
+        <p>
+            Try to beat the dealer by getting as close to 21 as possible
+            without going over.
+        </p>
 
+    </section>
 
-    <!-- 2. QUICK ACTION CALL TO ACTION BAR -->
-    <section class="welcome-buttons md-card primary-action-card">
+    <section class="game-objective">
+
+        <h2>Objective of the Game</h2>
+
+        <p>
+            The objective of Blackjack is to have a hand with a value closer
+            to 21 than the dealer's hand. If your score goes over 21, you lose
+            the hand.
+        </p>
+
+    </section>
+
+    <section class="game-instructions">
+
+        <h2>How to Play</h2>
+
+        <ol>
+            <li>Log in or create a new account.</li>
+
+            <li>Enter the amount you want to bet.</li>
+
+            <li>
+                Select <strong>Hit</strong> if you want another card.
+            </li>
+
+            <li>
+                Select <strong>Stay</strong> if you do not want another card.
+            </li>
+
+            <li>
+                The dealer will continue receiving cards until reaching
+                a score of at least 17.
+            </li>
+
+            <li>
+                The hand closest to 21 without going over wins.
+            </li>
+        </ol>
+
+    </section>
+
+    <section class="card-values">
+
+        <h2>Card Values</h2>
+
+        <ul>
+            <li>Cards 2 through 10 are worth their displayed value.</li>
+
+            <li>Jacks, Queens and Kings are worth 10 points.</li>
+
+            <li>
+                An Ace can be worth 1 or 11 points, depending on the hand.
+            </li>
+        </ul>
+
+    </section>
+
+    <section class="welcome-buttons">
+
         {% if g.user %}
-        <div class="action-row">
-            <p class="user-greeting">Welcome back, <strong>{{ g.user["username"] }}</strong>!</p>
-            <form action="{{ url_for('welcome.welcome') }}" method="post">
-                <input type="submit" value="Start Playing" class="md-btn-primary">
-            </form>
-        </div>
+
+        <p>
+            Welcome back, <strong>{{ g.user["username"] }}</strong>!
+        </p>
+
+        <form action="{{ url_for('welcome.welcome') }}" method="post">
+            <input type="submit" value="Start Playing">
+        </form>
+
         {% else %}
 
         <a href="{{ url_for('auth.login') }}" class="button">
@@ -41,55 +97,22 @@
             Register
         </a>
 
-        <p>
-            Do not have an account?
-            Register to start playing.
-        </p>
 
         {% endif %}
+
     </section>
 
-    <!-- 3. MATERIAL TWO-COLUMN CONTENT GRID -->
-    <div class="md-grid-layout">
+    <section class="disclaimer">
 
-        <!-- COLUMN A: GAME RULES -->
-        <article class="md-card">
-            <h2>How to Play</h2>
-            <ol class="md-list ordered-list">
-                <li>Log in or create a new account to track your bankroll.</li>
-                <li>Enter the amount of chips you want to wager.</li>
-                <li>Select <strong>Hit</strong> if you want another card drawn.</li>
-                <li>Select <strong>Stay</strong> if you are happy with your hand.</li>
-                <li>The dealer continues receiving cards until reaching at least 17.</li>
-                <li>The hand closest to 21 without going over wins the pot.</li>
-            </ol>
-        </article>
+        <h2>Disclaimer</h2>
 
-        <!-- COLUMN B: SPECIFICATIONS -->
-        <div class="column-stack">
-            <article class="md-card">
-                <h2>Card Values</h2>
-                <ul class="md-list values-list">
-                    <li><strong>2 through 10</strong> are worth face value.</li>
-                    <li><strong>Jacks, Queens, Kings</strong> are worth 10 points.</li>
-                    <li><strong>Aces</strong> can be worth 1 or 11 points seamlessly.</li>
-                </ul>
-            </article>
+        <p>
+            This Blackjack game was created for educational and entertainment
+            purposes only. No real money is used.
+        </p>
 
-            <article class="md-card secondary-card">
-                <h2>Objective of the Game</h2>
-                <p>The objective of Blackjack is to have a hand with a value closer to 21 than the dealer's hand. If
-                    your score goes over 21, you bust and lose the hand.</p>
-            </article>
-        </div>
-
-    </div>
-
-    <!-- 4. FOOTER FOOTNOTE CONTAINER -->
-    <footer class="disclaimer-footer">
-        <p><strong>Disclaimer:</strong> This Blackjack game was created for educational and entertainment purposes only.
-            No real currency or gambling mechanisms are involved.</p>
-    </footer>
+    </section>
 
 </div>
+
 {% endblock %}
