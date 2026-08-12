@@ -654,4 +654,60 @@ div.content ul.card-row li img.card {
         color: #ffca28;
         /* High-end gold text accent typical of card tables */
     }
+
+    /* ==========================================================================
+   Self-Contained Blackjack Grid System (Safe Overlay)
+   ========================================================================== */
+
+    /* 1. Force the container into a strict 2-column grid layout */
+    .content .blackjack-container {
+        display: grid;
+        grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+        gap: 2.5rem;
+        align-items: flex-start;
+        margin-top: 1.5rem;
+        width: 100%;
+    }
+
+    /* 2. Isolates your left column so overlapping cards don't break width calculations */
+    .blackjack-container .cards-display {
+        display: block;
+        width: 100%;
+    }
+
+    /* 3. Styles the right sidebar as an independent dashboard card component */
+    .blackjack-container .game-sidebar {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        /* Soft transparent card texture */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    /* 4. Align row entries: stats label on the left, values on the right */
+    .game-sidebar .game-information p {
+        display: flex;
+        justify-content: space-between;
+        margin: 0.5rem 0;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .game-sidebar .game-information p:last-child {
+        border-bottom: none;
+    }
+
+    .game-sidebar .info-label {
+        color: #94a3b8;
+        /* Muted label color */
+    }
+
+    .game-sidebar strong {
+        color: #ffca28;
+        /* Gold headline color accent */
+    }
 }
