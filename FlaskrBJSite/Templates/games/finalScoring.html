@@ -2,9 +2,13 @@
 
 {% block content %}
 
-<h2> {{session.get("Balance")}}</h2>
+<h2> Balance {{session.get("Balance")}}</h2>
+<h2> Wins {{session.get("wins")}}</h2>
+<h2> Losses {{session.get("losses")}}</h2>
+<h2> Ties {{session.get("ties")}}</h2>
 <form method="post">
     <input type="submit" name="playerChoice" value="Deal me in!">
+    <input type="submit" name="playerChoice" value="See Leaderboard">
     <input type="submit" name="playerChoice" value="Back to Main">
 </form>
 
