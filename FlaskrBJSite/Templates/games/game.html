@@ -15,7 +15,7 @@
       <h2>Dealer cards</h2>
       <ul class="cards-row">
         {% for card in dealerCards %}
-        <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card-image"></li>
+        <li><img src="{{ url_for('static', filename=card) }}" alt="Dealer card" class="card"></li>
         {% endfor %}
       </ul>
     </section>
@@ -25,7 +25,7 @@
       <h2>Your cards</h2>
       <ul class="cards-row">
         {% for card in playerCards %}
-        <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card-image"></li>
+        <li><img src="{{ url_for('static', filename=card) }}" alt="Player card" class="card"></li>
         {% endfor %}
       </ul>
     </section>
