@@ -105,10 +105,13 @@ class Hand:
         self.cards = cards
 
     def getValue(self):
-        self.value = 0
-        for c in self.cards:
-            self.value += c.getCardValue()
-        self.adjust_for_ace()
+        #reworking this to only return the value and not re-calculate every single time
+        # self.value = 0
+        # for c in self.cards:
+        #     self.value += c.getCardValue()
+        #     print("current Value" + str(self.value)+" card value"+str(c.getCardValue()))
+        # self.adjust_for_ace()
+        # print(self.value)
         return self.value
 
     def getAces(self):
@@ -116,11 +119,17 @@ class Hand:
 
     def addCard(self, card):
         self.cards.append(card)
+        print("Old value is: "+str(self.value))
         # recompute value of the hand after adding the card by calling getValue() before adjusting for ace
+        self.value += card.getCardValue()
         if card.getRank() == "A":
             self.aces += 1
-        self.getValue()
 
+        #do ace handling here
+        if self.value > 21 and self.aces > 0:
+            self.value -= 10
+            self.aces -= 1
+        print("Added card:"+card.getRank()+" New value is: "+str(self.value))
 
     def adjust_for_ace(self):
         for i in range(self.aces):
@@ -162,6 +171,7 @@ class Player:
 
     # Return the value of the hand currently held by the player
     def getValue(self):
+        # print("Player get value call")
         return self.hand.getValue()
 
     # Adds the card passed in to the player's hand
@@ -180,6 +190,7 @@ class Player:
 class Dealer(Player):
 
     def play_turn(self, deck):
+        # print("dealer get value call")
         while self.getValue() < 17:
             self.hit(deck)
 
@@ -295,6 +306,7 @@ class BlackJack:
     '''
     def hit(self):
         self.player.hit(self.deck)
+        # print("Player get value call in HIT")
         if self.player.getValue() > 21:
             self.result = 'Player busts'
             self.gameFinished = True
@@ -305,11 +317,15 @@ class BlackJack:
     def stand(self):
 #to play the dealer turn and decide the result
         self.dealer.play_turn(self.deck)
-        if self.dealer.getValue() > 21:
+        # print("Dealer get value call in Stand")
+        dealerValue =  self.dealer.getValue()
+        # print("Player get value call in Stand")
+        playerValue = self.player.getValue()
+        if dealerValue > 21:
             self.result = 'Dealer busts'
-        elif self.dealer.getValue() > self.player.getValue():
+        elif dealerValue>playerValue:
             self.result = 'Dealer wins'
-        elif self.dealer.getValue() < self.player.getValue():
+        elif dealerValue < playerValue:
             self.result = 'Player wins'
         else:
             self.result = 'Push'

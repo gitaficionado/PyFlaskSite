@@ -45,14 +45,13 @@ def betting():
             return redirect(url_for('games.playing'))
     return render_template('games/betting.html')
 
-
-
-
 @bp.route('/playing',methods=('GET','POST'))
 @login_required
 def playing():#TODO: refactor to better use the tools provided
     game = BlackJack(session[BJGame])
     print(game.getPlayerCards())
+    # print(game.player.getValue())
+    # print(game.player.hand.aces)
     if request.method == 'POST':
         if request.form['playerChoice'] == "Hit":
             game.hit()
@@ -78,7 +77,6 @@ def endOfHandHandler(bjGame):
     session[gameNumber] += 1
     session[BJGame] = bjGame.createDictonarySave()
     return redirect(url_for('games.results'))
-
 
 @bp.route('/results',methods=('GET','POST'))
 @login_required
