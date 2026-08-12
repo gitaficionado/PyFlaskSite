@@ -32,13 +32,20 @@
             </form>
         </div>
         {% else %}
-        <div class="action-row text-center">
-            <div class="button-group">
-                <a href="{{ url_for('auth.login') }}" class="md-btn-outline">Login</a>
-                <a href="{{ url_for('auth.register') }}" class="md-btn-filled">Register</a>
-            </div>
-            <p class="helper-text">New to the casino? Register an account to instantly start playing.</p>
-        </div>
+
+        <a href="{{ url_for('auth.login') }}" class="button">
+            Login
+        </a>
+
+        <a href="{{ url_for('auth.register') }}" class="button">
+            Register
+        </a>
+
+        <p>
+            Do not have an account?
+            Register to start playing.
+        </p>
+
         {% endif %}
     </section>
 
