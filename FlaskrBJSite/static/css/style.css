@@ -620,21 +620,16 @@ div.content ul.card-row li img.card {
     .game-sidebar .playerInput form {
         display: flex;
         flex-direction: row;
-        /* Forces Hit and Stay buttons to sit side-by-side */
+        justify-content: center;
+        /* Centering rule alignment */
         gap: 1rem;
-        /* Adds clean spacing between your action buttons */
-        width: 100%;
         margin: 0;
     }
 
-    /* Forces your submit buttons (Hit/Stay) inside the sidebar to scale normally */
     .game-sidebar .playerInput input[type=submit] {
-        flex: 1;
-        /* Makes both buttons take up equal width inside the sidebar */
-        min-width: 0;
-        /* Overrides the restrictive 10em rule from your global file */
+        min-width: 8em;
+        /* Gives them a uniform, clean width */
         align-self: unset;
-        /* Overrides the default layout push */
     }
 
     /* 5. Aligns stats labels to the left and gold values to the right */
