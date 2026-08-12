@@ -67,12 +67,12 @@ def getUserDataById(user_id):
             'SELECT * FROM user WHERE id = ?', (user_id,)
         ).fetchone()
 
-def saveScore(user_id, score):
+def saveScore(user_id, score,wins,losses,ties):
     get_db()
     try:
         g.db.execute(
-            "INSERT INTO leaderboard (userId, score) VALUES (?, ?)",
-            (user_id, score),
+            "INSERT INTO leaderboard (userId, score,wins,losses,ties) VALUES (?, ?,?,?,?)",
+            (user_id, score,wins,losses,ties),
         )
         g.db.commit()
     except g.db.IntegrityError:
@@ -82,7 +82,7 @@ def saveScore(user_id, score):
 def getLeaderBoard(amount = 10):
     get_db()
     return g.db.execute(
-        "Select username, score "
+        "Select username, score,wins,losses,ties "
         "from leaderboard "
         "join user on user.id = leaderboard.userId "
         "order by score desc "

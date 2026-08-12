@@ -9,5 +9,8 @@ CREATE TABLE user (
 
 Create TABLE leaderboard(
  userId INTEGER NOT NULL,
- score INTEGER NOT NULL
+ score INTEGER NOT NULL,
+ wins INTEGER NOT NULL,
+ losses INTEGER NOT NULL,
+ ties INTEGER NOT NULL
 );  

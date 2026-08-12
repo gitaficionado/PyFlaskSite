@@ -3,7 +3,7 @@
 {% block content %}
 
 {% for p in board %}
-<div>Player {{p['username']}} with score of {{p['score']}}</div>
+<div>Player {{p['username']}} with score of {{p['score']}} wins {{p['wins']}} losses {{p['losses']}} ties {{p['ties']}}</div>
 {% endfor %}
 
 

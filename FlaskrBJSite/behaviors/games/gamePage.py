@@ -14,11 +14,17 @@ balance = "Balance"
 BJGame = "BJGame"
 bettingAmount = "BettingAmount"
 gameNumber = "GameNumber"
+wins = "wins"
+losses = "losses"
+ties = "ties"
 def setupGameSession():
     session[balance] = 100
     session[BJGame] = {}
     session[bettingAmount] = 0
     session[gameNumber] = 0
+    session[wins] = 0
+    session[losses] = 0
+    session[ties] = 0
 
 @bp.route('/betting',methods=('GET','POST'))
 @login_required
@@ -63,9 +69,12 @@ def playing():#TODO: refactor to better use the tools provided
 def endOfHandHandler(bjGame):
     if bjGame.didPlayerWin():
         session[balance] += session[bettingAmount]
+        session[wins]+=1
     elif not bjGame.isGameTie():
         session[balance] -= session[bettingAmount]
-
+        session[losses]+=1
+    else:
+        session[ties]+=1
     session[gameNumber] += 1
     session[BJGame] = bjGame.createDictonarySave()
     return redirect(url_for('games.results'))
@@ -89,10 +98,12 @@ def results():
 @login_required
 def finalScoring():
     if request.method == 'POST':
-        db.saveScore(session['user_id'],session[balance])
-        if request.form['playerChoice'] == "New Game":
+        db.saveScore(session['user_id'],session[balance],session[wins],session[losses],session[ties])
+        if request.form['playerChoice'] == "Deal me in!":
             setupGameSession()
             return redirect(url_for('games.betting'))
+        elif request.form['playerChoice'] == "See Leaderboard":
+            return redirect((url_for('leaderboard.leaderboard')))
         else:
             return redirect(url_for('welcome'))
     return render_template('games/finalScoring.html',scoreSaved = True)
