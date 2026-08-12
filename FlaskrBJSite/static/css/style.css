@@ -513,4 +513,13 @@ div.content ul.card-row li img.card {
     margin-top: 1rem;
     font-size: 0.85rem;
     color: #64748b;
+/*Hide the arrows in the betting number bos*/
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
 }
