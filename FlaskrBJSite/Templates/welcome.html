@@ -31,6 +31,10 @@
                 <input type="submit" value="Start Playing" class="md-btn-primary">
             </form>
         </div>
+
+          <a href="{{ url_for('leaderboard.leaderboard') }}" class="button">
+            Leaderboard
+        </a>
         {% else %}
 
         <a href="{{ url_for('auth.login') }}" class="button">

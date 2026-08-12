@@ -2,9 +2,28 @@
 
 {% block content %}
 
+<table>
+    <tr>
+        <th>User Name</th>
+        <th>Chip Balance</th>
+        <th>Wins</th>
+        <th>Losses</th>
+        <th>Ties</th>
+    </tr>
 {% for p in board %}
-<div>Player {{p['username']}} with score of {{p['score']}} wins {{p['wins']}} losses {{p['losses']}} ties {{p['ties']}}</div>
+    <tr>
+        <td>{{p['username']}}</td>
+        <td>{{p['score']}}</td>
+        <td>{{p['wins']}}</td>
+        <td>{{p['losses']}}</td>
+        <td>{{p['ties']}}</td>
+    </tr>
 {% endfor %}
 
+</table>
+
+          <a href="{{ url_for('welcome') }}" class="button">
+            Welcome Page
+        </a>
 
 {% endblock %}
