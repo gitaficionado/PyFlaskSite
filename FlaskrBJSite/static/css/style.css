@@ -582,113 +582,62 @@ div.content ul.card-row li img.card {
     }
 
     /* ==========================================================================
-   Blackjack Game Table Flexbox Layout
+   Blackjack Game Table Flexbox Layout System
    ========================================================================== */
 
-    /* Main layout container split into two fluid side-by-side columns */
-    .blackjack-container {
-        display: flex;
-        gap: 2rem;
-        /* Reduced space to save horizontal room */
-        align-items: flex-start;
-        margin-top: 1rem;
-        width: 100%;
-    }
-
-    /* Left Column: Gives the card sections room to sit and expand safely */
-    .blackjack-container .cards-display {
-        flex: 1 1 70%;
-        /* Takes up 70% of layout space */
-        min-width: 0;
-        /* Crucial: Prevents overlapping card margins from blowing out the grid width */
-    }
-
-    /* Right Column: Converts your sidebar section into an elegant dashboard widget box */
-    .blackjack-container .game-sidebar {
-        flex: 1 1 30%;
-        /* Takes up 30% of the total row width */
-        min-width: 220px;
-        /* Lowered minimum width so it fits tighter layout bounds */
-        background: rgba(255, 255, 255, 0.05);
-        /* Translucent casino dashboard background */
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-radius: 12px;
-        padding: 1.25rem;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        /* Even spacing between game stats and your hit/stay buttons */
-    }
-
-    /* Forces card images to lock onto your standard card size inside this specific wrapper layout */
-    .blackjack-container .cards-row img.card-image {
-        display: block;
-        width: 85px;
-        height: 120px;
-        object-fit: contain;
-        border-radius: 6px;
-        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.3);
-        background: none;
-    }
-
-    /* Aligns text labels to the left edge, and bold gold stat numbers to the right edge */
-    .game-sidebar .game-information p {
-        display: flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .game-sidebar .game-information p:last-child {
-        border-bottom: none;
-    }
-
-    .game-sidebar .info-label {
-        color: #94a3b8;
-        /* Silver text tint for metadata labels */
-    }
-
-    .game-sidebar strong {
-        color: #ffca28;
-        /* High-end gold text accent typical of card tables */
-    }
-
-    /* ==========================================================================
-   Self-Contained Blackjack Grid System (Safe Overlay)
-   ========================================================================== */
-
-    /* 1. Force the container into a strict 2-column grid layout */
+    /* 1. Main layout container split into side-by-side columns */
     .content .blackjack-container {
-        display: grid;
-        grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+        display: flex;
         gap: 2.5rem;
         align-items: flex-start;
+        width: 100%;
         margin-top: 1.5rem;
-        width: 100%;
     }
 
-    /* 2. Isolates your left column so overlapping cards don't break width calculations */
+    /* 2. Left Column: Card display takes up 65% of the space */
     .blackjack-container .cards-display {
-        display: block;
-        width: 100%;
+        flex: 1 1 65%;
+        min-width: 0;
+        /* Prevents overlapping card margins from blowing out layout width */
     }
 
-    /* 3. Styles the right sidebar as an independent dashboard card component */
+    /* 3. Right Column: Sidebar takes up 35% of the space */
     .blackjack-container .game-sidebar {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
+        flex: 1 1 35%;
+        min-width: 260px;
+        /* Locks a clean minimum width for your dashboard data */
         background: rgba(255, 255, 255, 0.05);
-        /* Soft transparent card texture */
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 12px;
         padding: 1.5rem;
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
     }
 
-    /* 4. Align row entries: stats label on the left, values on the right */
+    /* 4. THE FIX: Resets the sloppy global form layout rules for your buttons inside the sidebar */
+    .game-sidebar .playerInput form {
+        display: flex;
+        flex-direction: row;
+        /* Forces Hit and Stay buttons to sit side-by-side */
+        gap: 1rem;
+        /* Adds clean spacing between your action buttons */
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Forces your submit buttons (Hit/Stay) inside the sidebar to scale normally */
+    .game-sidebar .playerInput input[type=submit] {
+        flex: 1;
+        /* Makes both buttons take up equal width inside the sidebar */
+        min-width: 0;
+        /* Overrides the restrictive 10em rule from your global file */
+        align-self: unset;
+        /* Overrides the default layout push */
+    }
+
+    /* 5. Aligns stats labels to the left and gold values to the right */
     .game-sidebar .game-information p {
         display: flex;
         justify-content: space-between;
@@ -703,11 +652,65 @@ div.content ul.card-row li img.card {
 
     .game-sidebar .info-label {
         color: #94a3b8;
-        /* Muted label color */
     }
 
     .game-sidebar strong {
         color: #ffca28;
-        /* Gold headline color accent */
     }
+}
+
+/* ==========================================================================
+   Self-Contained Blackjack Grid System (Safe Overlay)
+   ========================================================================== */
+
+/* 1. Force the container into a strict 2-column grid layout */
+.content .blackjack-container {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+    gap: 2.5rem;
+    align-items: flex-start;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+/* 2. Isolates your left column so overlapping cards don't break width calculations */
+.blackjack-container .cards-display {
+    display: block;
+    width: 100%;
+}
+
+/* 3. Styles the right sidebar as an independent dashboard card component */
+.blackjack-container .game-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    /* Soft transparent card texture */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* 4. Align row entries: stats label on the left, values on the right */
+.game-sidebar .game-information p {
+    display: flex;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.game-sidebar .game-information p:last-child {
+    border-bottom: none;
+}
+
+.game-sidebar .info-label {
+    color: #94a3b8;
+    /* Muted label color */
+}
+
+.game-sidebar strong {
+    color: #ffca28;
+    /* Gold headline color accent */
 }
