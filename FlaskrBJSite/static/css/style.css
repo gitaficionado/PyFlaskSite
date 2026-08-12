@@ -617,18 +617,21 @@ div.content ul.card-row li img.card {
     }
 
     /* 4. THE FIX: Resets the sloppy global form layout rules for your buttons inside the sidebar */
+
+
+    /* Aligns buttons flush to the left edge */
     .game-sidebar .playerInput form {
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        /* Centering rule alignment */
+        justify-content: flex-start;
+        /* Pushes content left alignment */
         gap: 1rem;
         margin: 0;
     }
 
     .game-sidebar .playerInput input[type=submit] {
         min-width: 8em;
-        /* Gives them a uniform, clean width */
+        /* Clean width target */
         align-self: unset;
     }
 
